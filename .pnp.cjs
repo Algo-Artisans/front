@@ -33,6 +33,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:7.3.1"],\
           ["@typescript-eslint/parser", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:7.3.1"],\
           ["autoprefixer", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:10.4.18"],\
+          ["clsx", "npm:2.1.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:14.1.4"],\
           ["eslint-config-prettier", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:9.1.0"],\
@@ -48,6 +49,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:18.2.0"],\
+          ["tailwind-merge", "npm:2.2.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.4.3#optional!builtin<compat/typescript>::version=5.4.3&hash=5adc0c"]\
         ],\
@@ -77,6 +79,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.24.0-7eb1dd11a2-3495eed727.zip/node_modules/@babel/runtime/",\
         "packageDependencies": [\
           ["@babel/runtime", "npm:7.24.0"],\
+          ["regenerator-runtime", "npm:0.14.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:7.24.1", {\
+        "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.24.1-45c3176b83-500c6a99dd.zip/node_modules/@babel/runtime/",\
+        "packageDependencies": [\
+          ["@babel/runtime", "npm:7.24.1"],\
           ["regenerator-runtime", "npm:0.14.1"]\
         ],\
         "linkType": "HARD"\
@@ -1373,6 +1383,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/client-only-npm-0.0.1-07d3e9505c-9d6cfd0c19.zip/node_modules/client-only/",\
         "packageDependencies": [\
           ["client-only", "npm:0.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["clsx", [\
+      ["npm:2.1.0", {\
+        "packageLocation": "./.yarn/cache/clsx-npm-2.1.0-29d286e1de-c09c00ad14.zip/node_modules/clsx/",\
+        "packageDependencies": [\
+          ["clsx", "npm:2.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3886,6 +3905,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:7.3.1"],\
           ["@typescript-eslint/parser", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:7.3.1"],\
           ["autoprefixer", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:10.4.18"],\
+          ["clsx", "npm:2.1.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:14.1.4"],\
           ["eslint-config-prettier", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:9.1.0"],\
@@ -3901,6 +3921,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:18.2.0"],\
+          ["tailwind-merge", "npm:2.2.2"],\
           ["tailwindcss", "npm:3.4.1"],\
           ["typescript", "patch:typescript@npm%3A5.4.3#optional!builtin<compat/typescript>::version=5.4.3&hash=5adc0c"]\
         ],\
@@ -5135,6 +5156,16 @@ const RAW_RUNTIME_STATE =
           ["synckit", "npm:0.8.8"],\
           ["@pkgr/core", "npm:0.1.1"],\
           ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tailwind-merge", [\
+      ["npm:2.2.2", {\
+        "packageLocation": "./.yarn/cache/tailwind-merge-npm-2.2.2-c7cbfe5f3b-68a5e19984.zip/node_modules/tailwind-merge/",\
+        "packageDependencies": [\
+          ["tailwind-merge", "npm:2.2.2"],\
+          ["@babel/runtime", "npm:7.24.1"]\
         ],\
         "linkType": "HARD"\
       }]\
