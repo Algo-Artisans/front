@@ -2,32 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer utilities {
+  .title-32 {
+    @apply text-[32px]/[130%] tracking-[-0.02em] font-bold;
+  }
+  .title-24 {
+    @apply text-[24px]/[130%] tracking-[-0.02em] font-bold;
+  }
+  .subtitle-28{
+    @apply text-[28px]/[130%] tracking-[-0.02em] font-bold;
+  }
+  .subtitle-22{
+    @apply text-[22px]/[130%] tracking-[-0.02em] font-bold;
+  }
+  .subtitle-20{
+    @apply text-[20px]/[130%] tracking-[-0.02em] font-bold;
+  }
+  .caption-16 {
+    @apply text-[16px]/[100%] tracking-[-0.03em] font-bold;
+  }
+  .caption-15{
+    @apply text-[15px]/[100%] tracking-[-0.03em] font-bold;
+  }
+  .caption-14{
+    @apply text-[14px]/[130%] tracking-[-0.02em] font-bold;
+  }
+  .caption-14-light{
+    @apply text-[14px]/[130%] tracking-[-0.02em] font-medium;
+  }
+  .caption-12{
+    @apply text-[12px]/[130%] tracking-[-0.41px] font-bold;
+  }
+  .caption-10{
+    @apply text-[10px]/[87.5%] tracking-[0em] font-bold;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  font-family: Pretendard-Regular;
 }
