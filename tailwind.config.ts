@@ -8,24 +8,24 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      black: '000000',
-      white: 'FFFFFF',
+      black: '#000000',
+      white: '#FFFFFF',
       system: {
-        kakaoBrown: '371D1E',
-        kakaoYellow: 'FAE100',
+        kakaoBrown: '#371D1E',
+        kakaoYellow: '#FAE100',
       },
       primary: {
-        500: '0FD417',
-        300: '61FF67',
+        500: '#0FD417',
+        300: '#61FF67',
       },
       secondary: {
-        900: '11002B',
-        700: '21194B',
+        900: '#11002B',
+        700: '#21194B',
       },
       grey: {
-        900: '192028',
-        800: '3A3A3A',
-        300: 'D9D9D9',
+        900: '#192028',
+        800: '#3A3A3A',
+        300: '#D9D9D9',
       },
     },
     extend: {
