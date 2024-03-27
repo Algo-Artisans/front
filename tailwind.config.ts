@@ -8,24 +8,24 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      black: '000000',
-      white: 'FFFFFF',
+      black: '#000000',
+      white: '#FFFFFF',
       system: {
-        kakaoBrown: '371D1E',
-        kakaoYellow: 'FAE100',
+        kakaoBrown: '#371D1E',
+        kakaoYellow: '#FAE100',
       },
       primary: {
-        500: '0FD417',
-        300: '61FF67',
+        500: '#0FD417',
+        300: '#61FF67',
       },
       secondary: {
-        900: '11002B',
-        700: '21194B',
+        900: '#11002B',
+        700: '#21194B',
       },
       grey: {
-        900: '192028',
-        800: '3A3A3A',
-        300: 'D9D9D9',
+        900: '#192028',
+        800: '#3A3A3A',
+        300: '#D9D9D9',
       },
     },
     extend: {
@@ -33,6 +33,10 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      boxShadow: {
+        button: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        tag: '0px 0px 10px rgba(152,227,155, 1)',
       },
     },
   },
