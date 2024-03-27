@@ -36,6 +36,7 @@ const config: Config = {
       },
       boxShadow: {
         button: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        tag: '0px 0px 10px rgba(152,227,155, 1)',
       },
     },
   },
