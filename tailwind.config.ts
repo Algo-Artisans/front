@@ -28,6 +28,9 @@ const config: Config = {
         500: '#8C8C8C',
         300: '#D9D9D9',
       },
+      error: {
+        400: '#FF5E5E',
+      },
     },
     extend: {
       backgroundImage: {
