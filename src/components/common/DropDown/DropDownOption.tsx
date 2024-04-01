@@ -13,7 +13,7 @@ export default function DropDownOption({ option }: DropDownOptionProps) {
   };
 
   return (
-    <li className="text-grey-900 text-caption-16" onClick={handleItemClick}>
+    <li className="text-grey-900 caption-16" onClick={handleItemClick}>
       {option}
     </li>
   );

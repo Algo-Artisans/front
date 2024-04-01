@@ -11,8 +11,6 @@ export default function DropDownHeader({
   className,
 }: DropDownHeaderProps) {
   return (
-    <p className={cn('text-caption-16 text-black', className)}>
-      {DropDownTitle}
-    </p>
+    <p className={cn('caption-16 text-black', className)}>{DropDownTitle}</p>
   );
 }
