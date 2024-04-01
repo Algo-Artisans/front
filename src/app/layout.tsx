@@ -13,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto">
+        {children}
+      </body>
     </html>
   );
 }
