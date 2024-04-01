@@ -25,7 +25,11 @@ const config: Config = {
       grey: {
         900: '#192028',
         800: '#3A3A3A',
+        500: '#8C8C8C',
         300: '#D9D9D9',
+      },
+      error: {
+        400: '#FF5E5E',
       },
     },
     extend: {
