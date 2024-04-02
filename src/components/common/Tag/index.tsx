@@ -15,12 +15,11 @@ export default function Tag({
   return (
     <div
       className={cn(
-        'h-[27px] px-[6px] py-[8px] flex items-center justify-center rounded-[15px] bg-primary-300 text-secondary-900 text-caption-12',
+        'h-[27px] w-fit px-[6px] py-[8px] flex items-center justify-center rounded-[15px] bg-primary-300 text-secondary-900 caption-12',
         className,
       )}
     >
-      {hashTagTrue && '#'}
-      {styleKeyword}
+      {hashTagTrue && '#'} {styleKeyword}
     </div>
   );
 }
