@@ -9,7 +9,7 @@ export default function ChipFilter({ children, ...props }: ChipFilterProps) {
   return (
     <button
       className={cn(
-        'flex justify-center items-center px-[9px] py-[5px] gap-[6px] bg-white text-secondary-900 text-caption-12',
+        'flex justify-center items-center px-[9px] py-[5px] gap-[6px] bg-white text-secondary-900 caption-12',
       )}
       {...props}
     >
