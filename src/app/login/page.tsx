@@ -28,6 +28,7 @@ export default function Page() {
         className="bg-system-kakaoYellow text-system-kakaoBrown text-caption-14"
         size={'large'}
         onClick={handleClickKakaoLoginButton}
+        disabled={false}
       >
         <KakaoLogo />
         카카오로 시작하기
