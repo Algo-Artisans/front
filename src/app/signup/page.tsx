@@ -1,6 +1,6 @@
 'use client';
 
-import { TERMS } from '../constants/terms';
+import { TERMS } from '../../constants/terms';
 
 import DropDown from '@/components/common/DropDown';
 import CTAButton from '@/components/common/CTAButton';
