@@ -2,7 +2,13 @@ import { cn } from '@/utils/cn';
 import { ImageProps } from 'next/image';
 import Image from 'next/image';
 
-type ImageType = 'rSmall' | 'rLarge' | 'small' | 'medium' | 'large';
+type ImageType =
+  | 'rSmall'
+  | 'rLarge'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'extraLarge';
 
 interface ImageContainerProps extends ImageProps {
   type: ImageType;
@@ -14,6 +20,7 @@ const ImageStyleAttribute = {
   small: 'w-[81px] h-[91px] rounded-[5px]',
   medium: 'w-[138px] h-[150px] rounded-[10px]',
   large: 'w-[162px] h-[177px] rounded-[5px]',
+  extraLarge: 'w-[244px] h-[307px]',
 };
 
 export default function ImageContainer({
