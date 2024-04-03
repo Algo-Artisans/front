@@ -24,8 +24,13 @@ export default function ImageContainer({
   const ImageStyles = ImageStyleAttribute[type];
 
   return (
-    <div className={cn('relative', ImageStyles, className)}>
-      <Image priority fill className="object-cover" {...restProps} />
+    <div className={cn('relative overflow-hidden', ImageStyles)}>
+      <Image
+        priority
+        fill
+        className={cn('object-cover', className)}
+        {...restProps}
+      />
     </div>
   );
 }
