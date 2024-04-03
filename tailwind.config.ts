@@ -32,7 +32,7 @@ const config: Config = {
         400: '#FF5E5E',
       },
     },
-    zIndex: { modal: '500' },
+    zIndex: { header: '300', modal: '500' },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
