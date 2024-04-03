@@ -66,5 +66,3 @@ export default function UserCard({
     </div>
   );
 }
-
-//faceShapeWorst에 맞춰서 const faceShape 뽑아내구, 스타일 3종류 배열로 받고
