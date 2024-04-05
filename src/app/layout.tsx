@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import QueryClientProviders from '@/components/common/QueryClientProviders';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,10 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto">
-        {children}
-      </body>
-    </html>
+    <QueryClientProviders>
+      <html lang="en">
+        <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto">
+          {children}
+        </body>
+      </html>
+    </QueryClientProviders>
   );
 }
