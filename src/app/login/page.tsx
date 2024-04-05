@@ -11,7 +11,7 @@ export default function Page() {
 
   //NOTE : 카카오 서버로 인가 요청
   const handleClickKakaoLoginButton = () => {
-    push(`${process.env.NEXT_PUBLIC_API_BASE_URL}/oauth2/authorization/kakao`);
+    push(`${process.env.NEXT_PUBLIC_BASE_URL}/oauth2/authorization/kakao`);
   };
 
   return (
