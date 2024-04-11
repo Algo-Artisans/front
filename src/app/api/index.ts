@@ -1,5 +1,4 @@
 import Cookie from 'js-cookie';
-
 import axios, { Method } from 'axios';
 
 const instance = axios.create({
