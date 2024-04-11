@@ -13,7 +13,7 @@ export default function Page() {
       </header>
       <UserCard
         nickname={'모자람없는인생'}
-        generatedPictureUrl={'/assets/pic/test.png'}
+        generatedPictureUrl={'/assets/image/user_example_img.svg'}
         isBest={true}
         styleDescription={`내추럴한 느낌의 시스루뱅이나
            펌이 이 유형에 속해요.`}
