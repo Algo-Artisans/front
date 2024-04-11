@@ -12,7 +12,6 @@ export default function Page() {
   const handleRoleClick = (selectedRole: string) => {
     setRole(selectedRole);
     postRoleMutation.mutate(selectedRole);
-    console.log(selectedRole);
   };
 
   return (
