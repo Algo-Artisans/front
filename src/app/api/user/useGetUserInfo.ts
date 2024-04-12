@@ -4,13 +4,13 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
 interface GetUserInfoProps {
-  kakaoNickName: string;
-  kakaoProfileImg: string;
-  role: string;
-  gender: string;
-  nickName: string;
   faceShapeBest: string;
   faceShapeWorst: string;
+  gender: string;
+  kakaoNickname: string;
+  nickname: string;
+  picture: string;
+  role: string;
 }
 
 const getUserInfo = (): Promise<ApiResponse<GetUserInfoProps>> => {
@@ -23,7 +23,6 @@ export const useGetUserInfo = (): UseQueryResult<
 > => {
   return useQuery({
     queryKey: ['get-user-info'],
-    queryFn: getUserInfo,
-    select: (data) => data.data,
+    queryFn: () => getUserInfo(),
   });
 };
