@@ -22,7 +22,7 @@ interface AllPortfolioProps {
 }
 
 const getAllPortfolio = (): Promise<ApiResponse<AllPortfolioProps>> => {
-  return axiosRequest('get', `/portfolios`);
+  return axiosRequest('get', `/api/v1/portfolios`);
 };
 
 export const useGetAllPortfolio = (): UseQueryResult<

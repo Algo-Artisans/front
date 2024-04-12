@@ -9,7 +9,7 @@ interface GetFavDesignerProps {
 }
 
 const getFavDesigner = (): Promise<ApiResponse<GetFavDesignerProps>> => {
-  return axiosRequest('get', `/like/hairstylists`);
+  return axiosRequest('get', `/api/v1/like/hairstylists`);
 };
 
 export const useGetPortfolio = (): UseQueryResult<

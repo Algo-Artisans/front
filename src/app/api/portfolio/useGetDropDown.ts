@@ -24,7 +24,7 @@ interface AllPortfolioProps {
 const getDropDown = (
   dropdown: string,
 ): Promise<ApiResponse<AllPortfolioProps>> => {
-  return axiosRequest('get', `/dropdown/portfolios/${dropdown}`);
+  return axiosRequest('get', `/api/v1/dropdown/portfolios/${dropdown}`);
 };
 
 export const useGetDropDown = (

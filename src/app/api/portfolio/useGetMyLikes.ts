@@ -8,7 +8,7 @@ interface GetLikesProps {
 }
 
 const getMyLikes = (): Promise<ApiResponse<GetLikesProps>> => {
-  return axiosRequest('get', `/portfolios`);
+  return axiosRequest('get', `/api/v1/portfolios`);
 };
 
 export const useGetMyLikes = (): UseQueryResult<GetLikesProps, AxiosError> => {
