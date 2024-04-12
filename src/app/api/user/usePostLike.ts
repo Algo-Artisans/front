@@ -9,7 +9,10 @@ interface PostLikeProps {
 }
 
 const postLike = (portfolioId: string): Promise<ApiResponse<PostLikeProps>> => {
-  return axiosRequest('post', `/like/hairstylist/portfolioId=${portfolioId}`);
+  return axiosRequest(
+    'post',
+    `/api/v1/like/hairstylist/portfolioId=${portfolioId}`,
+  );
 };
 
 export const usePostLike = (): UseMutationResult<

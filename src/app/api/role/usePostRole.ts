@@ -9,11 +9,11 @@ interface PostRole {
   isSuccess: boolean;
 }
 
-const postPortfolio = (role: string): Promise<ApiResponse<PostRole>> => {
-  return axiosRequest('post', `/select-role/role=${role}`);
+const postRole = (role: string): Promise<ApiResponse<PostRole>> => {
+  return axiosRequest('post', `/select-role?role=${role}`);
 };
 
-export const usePostPortfolio = (): UseMutationResult<
+export const usePostRole = (): UseMutationResult<
   ApiResponse<PostRole>,
   AxiosError,
   string
@@ -21,8 +21,8 @@ export const usePostPortfolio = (): UseMutationResult<
   const { push } = useRouter();
 
   return useMutation({
-    mutationKey: ['post-portfolio'],
-    mutationFn: postPortfolio,
+    mutationKey: ['post-role'],
+    mutationFn: postRole,
     onSuccess: () => {
       push('/');
     },

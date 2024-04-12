@@ -5,32 +5,29 @@ import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 interface PostUserInfo {
-  nickName: string;
+  nickname: string;
   gender: string;
 }
 
-const postPortfolio = (
-  gender: string,
-  nickName: string,
+const postUserInfo = (
+  userInfo: PostUserInfo,
 ): Promise<ApiResponse<PostUserInfo>> => {
-  return axiosRequest(
-    'post',
-    `/nicknameGender/gender=${gender}&nickname=${nickName}`,
-  );
+  const { gender, nickname } = userInfo;
+  return axiosRequest('post', `/api/v1/nicknameGender`, { nickname, gender });
 };
 
-export const usePostPortfolio = (): UseMutationResult<
+export const usePostUserInfo = (): UseMutationResult<
   ApiResponse<PostUserInfo>,
   AxiosError,
-  { gender: string; nickName: string }
+  PostUserInfo
 > => {
   const { push } = useRouter();
 
   return useMutation({
     mutationKey: ['post-userInfo'],
-    mutationFn: ({ gender, nickName }) => postPortfolio(gender, nickName),
+    mutationFn: ({ gender, nickname }) => postUserInfo({ gender, nickname }),
     onSuccess: () => {
-      push('/');
+      push('/onboarding');
     },
   });
 };

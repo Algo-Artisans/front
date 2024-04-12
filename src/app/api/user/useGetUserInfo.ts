@@ -14,7 +14,7 @@ interface GetUserInfoProps {
 }
 
 const getUserInfo = (): Promise<ApiResponse<GetUserInfoProps>> => {
-  return axiosRequest('get', `/information`);
+  return axiosRequest('get', `/api/v1/information`);
 };
 
 export const useGetUserInfo = (): UseQueryResult<
@@ -23,7 +23,7 @@ export const useGetUserInfo = (): UseQueryResult<
 > => {
   return useQuery({
     queryKey: ['get-user-info'],
-    queryFn: () => getUserInfo(),
+    queryFn: getUserInfo,
     select: (data) => data.data,
   });
 };

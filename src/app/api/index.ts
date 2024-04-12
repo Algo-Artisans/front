@@ -1,5 +1,4 @@
 import Cookie from 'js-cookie';
-
 import axios, { Method } from 'axios';
 
 const instance = axios.create({
@@ -24,15 +23,18 @@ export interface ApiResponse<T> {
   };
 }
 
-axios.interceptors.request.use(
+instance.interceptors.request.use(
   function (config) {
+    if (!config.headers) {
+      return config;
+    }
+
     //NOTE : 로그인 후 헤더에 Authorization 필요 시 토큰 담기
     const accessToken = Cookie.get('accessToken');
 
-    if (accessToken && !config.headers.Authorization) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+    if (accessToken && !config.headers['Authorization']) {
+      config.headers.Authorization = `${accessToken}`;
     }
-
     return config;
   },
   function (error) {

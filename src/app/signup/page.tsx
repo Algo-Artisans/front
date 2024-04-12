@@ -1,6 +1,7 @@
 'use client';
 
 import { TERMS } from '../../constants/terms';
+import { usePostUserInfo } from '../api/user/usePostUserInfo';
 
 import DropDown from '@/components/common/DropDown';
 import CTAButton from '@/components/common/CTAButton';
@@ -8,10 +9,10 @@ import AllTerms from '@/components/signUp/AllTerms';
 import Terms from '@/components/signUp/Terms';
 import { useMemo, useState } from 'react';
 import InputField from '@/components/common/InputField';
-import { useRouter } from 'next/navigation';
 
 export default function Page() {
-  const { push } = useRouter();
+  const [nickname, setNickname] = useState('');
+  const [gender, setGender] = useState('여자');
 
   const [isClicked, setIsClicked] = useState(
     TERMS.map((term) => ({ ...term, checked: false })),
@@ -39,9 +40,10 @@ export default function Page() {
     );
   };
 
+  const postUserInfo = usePostUserInfo();
+
   const handleClickCTAButton = () => {
-    //TODO: api 로직 추가 & 온보딩으로 보내기
-    push('/');
+    postUserInfo.mutate({ gender, nickname });
   };
 
   return (
@@ -56,12 +58,16 @@ export default function Page() {
           placeholder="최대 8글자의 닉네임을 생성해주세요."
           title="닉네임"
           pattern="^[가-힣a-zA-Z]{1,8}$"
+          onChange={(e) => setNickname(e.target.value)}
         />
         <div className="relative w-full flex flex-col gap-[10px]">
           <DropDown.Container>
             <DropDown.Header DropDownTitle="성별"></DropDown.Header>
             <DropDown.Trigger />
-            <DropDown.OptionList options={['여자', '남자']} />
+            <DropDown.OptionList
+              options={['여자', '남자']}
+              onSelect={(option) => setGender(option)}
+            />
           </DropDown.Container>
         </div>
         <div className="flex flex-col items-center w-full gap-[35px] my-[40px]">
@@ -74,7 +80,6 @@ export default function Page() {
               key={term.id}
               id={term.id}
               policyTitle={term.policyTitle}
-              policyDescription={term.policyDescription}
               required={term.required}
               checked={isClicked[index].checked}
               onChange={handleClickCheck(term.id)}

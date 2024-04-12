@@ -23,7 +23,7 @@ interface PostPortfolio {
 }
 
 const postPortfolio = (): Promise<ApiResponse<PostPortfolio>> => {
-  return axiosRequest('post', `/myPortfolio`);
+  return axiosRequest('post', `/api/v1/myPortfolio`);
 };
 
 export const usePostPortfolio = (): UseMutationResult<
