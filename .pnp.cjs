@@ -48,6 +48,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-prettier", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:5.1.3"],\
           ["eslint-plugin-promise", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:6.1.1"],\
           ["eslint-plugin-react", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:7.34.1"],\
+          ["js-cookie", "npm:3.0.5"],\
           ["next", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:14.1.3"],\
           ["postcss", "npm:8.4.36"],\
           ["prettier", "npm:3.2.5"],\
@@ -6841,6 +6842,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["js-cookie", [\
+      ["npm:3.0.5", {\
+        "packageLocation": "./.yarn/cache/js-cookie-npm-3.0.5-8fc8fcc9b4-04a0e56040.zip/node_modules/js-cookie/",\
+        "packageDependencies": [\
+          ["js-cookie", "npm:3.0.5"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["js-tokens", [\
       ["npm:4.0.0", {\
         "packageLocation": "./.yarn/cache/js-tokens-npm-4.0.0-0ac852e9e2-e248708d37.zip/node_modules/js-tokens/",\
@@ -7315,6 +7325,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-prettier", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:5.1.3"],\
           ["eslint-plugin-promise", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:6.1.1"],\
           ["eslint-plugin-react", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:7.34.1"],\
+          ["js-cookie", "npm:3.0.5"],\
           ["next", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:14.1.3"],\
           ["postcss", "npm:8.4.36"],\
           ["prettier", "npm:3.2.5"],\

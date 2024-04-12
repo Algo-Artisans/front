@@ -7,7 +7,7 @@ import { InputHTMLAttributes } from 'react';
 interface TermsItemProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   policyTitle: string;
-  policyDescription: string;
+  // policyDescription: string;
   required: boolean;
   checked: boolean;
 }

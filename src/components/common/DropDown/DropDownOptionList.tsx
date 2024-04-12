@@ -3,10 +3,12 @@ import DropDownOption from './DropDownOption';
 
 interface DropDownOptionListProps {
   options: string[];
+  onSelect: (option: string) => void;
 }
 
 export default function DropDownOptionList({
   options,
+  onSelect,
 }: DropDownOptionListProps) {
   const { isOpen } = useDropDownContext();
 
@@ -16,7 +18,7 @@ export default function DropDownOptionList({
     >
       <ul className="flex flex-col gap-[20px]">
         {options.map((option, index) => (
-          <DropDownOption key={index} option={option} />
+          <DropDownOption key={index} option={option} onSelect={onSelect} />
         ))}
       </ul>
     </div>

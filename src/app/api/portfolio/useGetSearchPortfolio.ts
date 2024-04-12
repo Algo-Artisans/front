@@ -24,7 +24,7 @@ interface SearchPortfolioProps {
 const getSearchPortfolio = (
   hairStyle: string,
 ): Promise<ApiResponse<SearchPortfolioProps>> => {
-  return axiosRequest('get', `/hairStyle/portfolios/${hairStyle}`);
+  return axiosRequest('get', `/api/v1/hairStyle/portfolios/${hairStyle}`);
 };
 
 export const usegetSearchPortfolio = (
