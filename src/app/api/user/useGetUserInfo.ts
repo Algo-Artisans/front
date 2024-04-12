@@ -23,7 +23,7 @@ export const useGetUserInfo = (): UseQueryResult<
 > => {
   return useQuery({
     queryKey: ['get-user-info'],
-    queryFn: () => getUserInfo(),
+    queryFn: getUserInfo,
     select: (data) => data.data,
   });
 };
