@@ -1,8 +1,11 @@
 import MultipleUpwardArrow from '../../../../public/assets/icons/multiple_arrow_upward_25.svg';
+import FloatingActionButton from '../FloatingActionButton';
+import Home from '../../../../public/assets/icons/home_35.svg';
 
 import ImageContainer from '@/components/common/Image';
 import Tag from '@/components/common/Tag';
 import { STYLES } from '@/constants/styles';
+import { useRouter } from 'next/navigation';
 
 interface userCardProps {
   nickname: string;
@@ -28,6 +31,13 @@ export default function UserCard({
   const styleDescription: string = isBest
     ? STYLES.find((style) => style.id === faceShapeBest)?.description || ''
     : STYLES.find((style) => style.id === faceShapeWorst)?.description || '';
+
+  const { push } = useRouter();
+
+  //NOTE : 카카오 서버로 인가 요청
+  const handleClickHomeButton = () => {
+    push('/');
+  };
 
   return (
     <div className="relative flex flex-col items-center w-full h-dvh bg-secondary-900 rounded-[20px] pt-[40px] px-[30px] gap-[38px]">
@@ -76,6 +86,12 @@ export default function UserCard({
           <br />
           {isBest ? 'WORST' : 'BEST'} 스타일도 확인해보세요!
         </p>
+        <FloatingActionButton
+          className="p-0 fixed bottom-5 right-3 bg-primary-300"
+          onClick={handleClickHomeButton}
+        >
+          <Home />
+        </FloatingActionButton>
       </div>
     </div>
   );
