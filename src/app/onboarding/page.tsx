@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Page() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [role, setRole] = useState('');
   const postRoleMutation = usePostRole();
 
