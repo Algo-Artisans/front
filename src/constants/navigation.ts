@@ -15,21 +15,22 @@ export interface NavigationItemType {
 export const NAVIGATION: NavigationItemType[] = [
   {
     icon: AiCameraIcon,
-    key: '/aiCam',
+    key: 'user',
     name: 'AiCam',
-    route: '/aiCam',
+    // TODO: 파이썬 사이트로 url 변경
+    route: '/user',
     routeName: 'AI 헤어',
   },
   {
     icon: HomeIcon,
-    key: '/',
+    key: 'designerList',
     name: 'Home',
-    route: '/',
+    route: '/designerList',
     routeName: '홈',
   },
   {
     icon: ProfileIcon,
-    key: '/mypage',
+    key: 'mypage',
     name: 'MyPage',
     route: '/mypage',
     routeName: '마이페이지',

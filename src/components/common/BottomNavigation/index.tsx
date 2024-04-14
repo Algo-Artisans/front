@@ -13,11 +13,12 @@ export default function BottomNavigation({
   ...restProps
 }: HTMLAttributes<HTMLDivElement>) {
   const currentPath = usePathname();
+  const slicedPathname = currentPath.slice(1).split('/')[0];
 
   return (
     <nav
       className={cn(
-        'h-[70px] w-full flex justify-around items-center gap-[20px] p-[12px]',
+        'h-[70px] w-full flex justify-around items-center gap-[20px] p-[12px] fixed bottom-0 bg-white z-nav',
         className,
         { ...restProps },
       )}
@@ -27,7 +28,7 @@ export default function BottomNavigation({
           <div
             className={cn(
               'flex flex-col items-center justify-center',
-              item.key === currentPath
+              item.key === slicedPathname
                 ? 'fill-primary-500'
                 : 'fill-secondary-900',
             )}
