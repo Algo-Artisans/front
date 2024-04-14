@@ -11,8 +11,9 @@ interface userCardProps {
   nickname: string;
   faceShapeBest: string;
   faceShapeWorst: string;
-  generatedPictureUrl: string;
   isBest: boolean;
+  bestImageUrl: string;
+  worstImageUrl: string;
   onToggleStyle: () => void;
 }
 
@@ -20,7 +21,8 @@ export default function UserCard({
   nickname,
   faceShapeBest,
   faceShapeWorst,
-  generatedPictureUrl,
+  bestImageUrl,
+  worstImageUrl,
   isBest,
   onToggleStyle,
 }: userCardProps) {
@@ -48,7 +50,7 @@ export default function UserCard({
       </p>
       <ImageContainer
         type={'extraLarge'}
-        src={generatedPictureUrl}
+        src={isBest ? bestImageUrl : worstImageUrl}
         alt={nickname}
       />
       {/* TODO: 캐러셀 넣을 경우 stepIcon 넣기 */}
