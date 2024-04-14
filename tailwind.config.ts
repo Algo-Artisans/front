@@ -34,7 +34,7 @@ const config: Config = {
         400: '#FF5E5E',
       },
     },
-    zIndex: { header: '300', modal: '500' },
+    zIndex: { header: '300', nav: '400', modal: '500' },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -47,6 +47,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };
 export default config;
