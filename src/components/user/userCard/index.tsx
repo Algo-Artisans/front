@@ -2,7 +2,6 @@ import MultipleUpwardArrow from '../../../../public/assets/icons/multiple_arrow_
 
 import ImageContainer from '@/components/common/Image';
 import Tag from '@/components/common/Tag';
-import { STYLES } from '@/constants/styles';
 
 interface userCardProps {
   nickname: string;
@@ -11,25 +10,27 @@ interface userCardProps {
   isBest: boolean;
   bestImageUrl: string;
   worstImageUrl: string;
+  styleList: string[];
+  styleDescription: string;
   onToggleStyle: () => void;
 }
 
 export default function UserCard({
   nickname,
-  faceShapeBest,
-  faceShapeWorst,
+  styleDescription,
+  styleList,
   bestImageUrl,
   worstImageUrl,
   isBest,
   onToggleStyle,
 }: userCardProps) {
-  const styleList: string[] = isBest
-    ? STYLES.find((style) => style.id === faceShapeBest)?.hairStyle || []
-    : STYLES.find((style) => style.id === faceShapeWorst)?.hairStyle || [];
+  // const styleList: string[] = isBest
+  //   ? STYLES.find((style) => style.id === faceShapeBest)?.hairStyle || []
+  //   : STYLES.find((style) => style.id === faceShapeWorst)?.hairStyle || [];
 
-  const styleDescription: string = isBest
-    ? STYLES.find((style) => style.id === faceShapeBest)?.description || ''
-    : STYLES.find((style) => style.id === faceShapeWorst)?.description || '';
+  // const styleDescription: string = isBest
+  //   ? STYLES.find((style) => style.id === faceShapeBest)?.description || ''
+  //   : STYLES.find((style) => style.id === faceShapeWorst)?.description || '';
 
   return (
     <div className="relative flex flex-col items-center w-full h-full bg-secondary-900 rounded-[20px] pt-[40px] gap-[38px]">

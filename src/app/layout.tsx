@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import QueryClientProviders from '@/components/common/QueryClientProviders';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +17,7 @@ export default function RootLayout({
     <QueryClientProviders>
       <html lang="en">
         <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto scrollbar-hide">
-          {children}
+          <Suspense>{children}</Suspense>
         </body>
       </html>
     </QueryClientProviders>

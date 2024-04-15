@@ -4,9 +4,9 @@ import { useGetUserInfo } from '../api/user/useGetUserInfo';
 import useGetS3Image from '../api/user/useGetS3Image';
 import Home from '../../../public/assets/icons/home_35.svg';
 
+import { STYLES } from '@/constants/styles';
 import { useEffect, useState } from 'react';
 import UserCard from '@/components/user/userCard';
-import { STYLES } from '@/constants/styles';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FILENAMES } from '@/constants/fileNames';
 import FloatingActionButton from '@/components/user/FloatingActionButton';
@@ -15,10 +15,9 @@ export default function Page() {
   const { data: userInfo } = useGetUserInfo();
 
   const searchParams = useSearchParams();
-  //TODO: AI랑 쿼리 맞추기
-  const faceShapeBest = searchParams.get('faceShapeBest');
-  const faceShapeWorst = searchParams.get('faceShapeWorst');
 
+  const faceShapeBest = searchParams.get('bestFace');
+  const faceShapeWorst = searchParams.get('worstFace');
   const [bestImageUrl, setBestImageUrl] = useState('');
   const [worstImageUrl, setWorstImageUrl] = useState('');
 
@@ -42,16 +41,29 @@ export default function Page() {
   };
 
   const faceShape: string =
-    STYLES.find((style) => style.id === userInfo?.faceShapeBest)?.faceShape ||
+    STYLES.find((style) => style.name === userInfo?.faceShapeBest)?.faceShape ||
     '';
 
   const hairTitle: string =
-    STYLES.find((style) => style.id === userInfo?.faceShapeBest)?.title || '';
+    STYLES.find((style) => style.name === userInfo?.faceShapeBest)?.title || '';
+
+  console.log('hair', hairTitle);
+  console.log('face', faceShape);
   const { push } = useRouter();
+
+  const styleList: string[] = isBest
+    ? STYLES.find((style) => style.id === faceShapeBest)?.hairStyle || []
+    : STYLES.find((style) => style.id === faceShapeWorst)?.hairStyle || [];
+
+  console.log(styleList);
+
+  const styleDescription: string = isBest
+    ? STYLES.find((style) => style.id === faceShapeBest)?.description || ''
+    : STYLES.find((style) => style.id === faceShapeWorst)?.description || '';
 
   //NOTE : 카카오 서버로 인가 요청
   const handleClickHomeButton = () => {
-    push('/');
+    push('/designerList?');
   };
   return (
     <div className="flex flex-col px-[36px] mt-[75px] gap-[20px] items-center justify-center">
@@ -68,6 +80,8 @@ export default function Page() {
         onToggleStyle={handleToggleStyle}
         faceShapeBest={userInfo?.faceShapeBest || ''}
         faceShapeWorst={userInfo?.faceShapeWorst || ''}
+        styleList={styleList}
+        styleDescription={styleDescription}
       />
       <FloatingActionButton
         className="p-0 fixed bottom-5 right-3 bg-primary-300"
