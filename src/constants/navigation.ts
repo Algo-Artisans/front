@@ -17,8 +17,7 @@ export const NAVIGATION: NavigationItemType[] = [
     icon: AiCameraIcon,
     key: 'user',
     name: 'AiCam',
-    // TODO: 파이썬 사이트로 url 변경
-    route: '/user',
+    route: 'http://34.64.51.207:5000/',
     routeName: 'AI 헤어',
   },
   {

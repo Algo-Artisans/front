@@ -13,10 +13,6 @@ import { useEffect } from 'react';
 import BottomNavigation from '@/components/common/BottomNavigation';
 
 export default function Page() {
-  //처음에 넘겨 받은 헤어스타일들을 기반으로 서치 api & 일단 전체 디자이너 리스트 가지고는 있기
-  //넘어올 때 /designerList?hairstyle1=a&&hairstyle2=b...
-
-  const searchParams = useSearchParams();
   const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
 
   const {
@@ -30,13 +26,13 @@ export default function Page() {
     setSelectedSortIndex,
   } = useFilterSelection();
 
-  const hairStyles = [
-    searchParams.get('hairStyle1') || '',
-    searchParams.get('hairStyle2') || '',
-    searchParams.get('hairStyle3') || '',
-  ];
-
   useEffect(() => {
+    const searchParams = useSearchParams();
+    const hairStyles = [
+      searchParams.get('hairStyle1') || '',
+      searchParams.get('hairStyle2') || '',
+      searchParams.get('hairStyle3') || '',
+    ];
     setSelectedStyles(hairStyles);
   }, []);
 
