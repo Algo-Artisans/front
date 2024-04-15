@@ -47,15 +47,11 @@ export default function Page() {
   const hairTitle: string =
     STYLES.find((style) => style.name === userInfo?.faceShapeBest)?.title || '';
 
-  console.log('hair', hairTitle);
-  console.log('face', faceShape);
   const { push } = useRouter();
 
   const styleList: string[] = isBest
     ? STYLES.find((style) => style.id === faceShapeBest)?.hairStyle || []
     : STYLES.find((style) => style.id === faceShapeWorst)?.hairStyle || [];
-
-  console.log(styleList);
 
   const styleDescription: string = isBest
     ? STYLES.find((style) => style.id === faceShapeBest)?.description || ''
@@ -63,7 +59,9 @@ export default function Page() {
 
   //NOTE : 카카오 서버로 인가 요청
   const handleClickHomeButton = () => {
-    push('/designerList?');
+    push(
+      '/designerList?hairStyle1=단발 C컬펌&hairStyle2=보브컷&hairStyle3=숏컷',
+    );
   };
   return (
     <div className="flex flex-col px-[36px] mt-[75px] gap-[20px] items-center justify-center">
