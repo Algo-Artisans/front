@@ -33,7 +33,7 @@ interface MyPortfolioProps {
 const getMyPortfolio = (
   portfolioId: number,
 ): Promise<ApiResponse<MyPortfolioProps>> => {
-  return axiosRequest('get', `/api/v1/myPortfolio?portfoliId=${portfolioId}`);
+  return axiosRequest('get', `/api/v1/myPortfolio?portfolioId=${portfolioId}`);
 };
 
 const useGetMyPortfolio = (
