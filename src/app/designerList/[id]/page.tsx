@@ -12,7 +12,6 @@ import ShowPriceList from '@/components/designerDetail/ShowPriceList';
 export default function Page() {
   const currentPath = usePathname();
   const portfolioId = Number(currentPath.split('/').pop());
-
   const { data: designerPortfolio } = useGetMyPortfolio(portfolioId);
 
   return (
