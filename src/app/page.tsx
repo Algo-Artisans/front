@@ -1,7 +1,7 @@
 'use client';
 
-import Logo from '../../../public/assets/logo/logo.svg';
-import KakaoLogo from '../../../public/assets/icons/kakaoLogo_24.svg';
+import Logo from '../../public/assets/logo/logo.svg';
+import KakaoLogo from '../../public/assets/icons/kakaoLogo_24.svg';
 
 import CTAButton from '@/components/common/CTAButton';
 import { useRouter } from 'next/navigation';
