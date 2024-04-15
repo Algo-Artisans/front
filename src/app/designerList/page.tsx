@@ -25,9 +25,9 @@ export default function Page() {
     setSelectedStyles,
     setSelectedSortIndex,
   } = useFilterSelection();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const searchParams = useSearchParams();
     const hairStyles = [
       searchParams.get('hairStyle1') || '',
       searchParams.get('hairStyle2') || '',

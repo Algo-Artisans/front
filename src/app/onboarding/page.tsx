@@ -4,15 +4,19 @@ import { usePostRole } from '../api/role/usePostRole';
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [role, setRole] = useState('');
   const postRoleMutation = usePostRole();
-
+  const { push } = useRouter();
   const handleRoleClick = (selectedRole: string) => {
     setRole(selectedRole);
     postRoleMutation.mutate(selectedRole);
+    push(
+      '/designerList?hairStyle1=단발 C컬펌&hairStyle2=보브컷&hairStyle3=숏컷',
+    );
   };
 
   return (
