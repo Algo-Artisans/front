@@ -4,6 +4,10 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
 interface SearchPortfolioProps {
+  cost1: string;
+  cost2: string;
+  cost3: string;
+  cost4: string;
   hairName1: string;
   hairName2: string;
   hairName3: string;
@@ -19,20 +23,32 @@ interface SearchPortfolioProps {
   portfolioId: number;
   profileURL: string;
   snsAddress: string;
+  styling1: string;
+  styling2: string;
+  styling3: string;
+  styling4: string;
+  workplace: string;
 }
 
 const getSearchPortfolio = (
   hairStyle: string,
 ): Promise<ApiResponse<SearchPortfolioProps>> => {
-  return axiosRequest('get', `/api/v1/hairStyle/portfolios/${hairStyle}`);
+  return axiosRequest(
+    'get',
+    `/api/v1/search/portfolios?hairstyle=${hairStyle}`,
+  );
 };
 
-export const usegetSearchPortfolio = (
-  hairStyle: string,
-): UseQueryResult<SearchPortfolioProps, AxiosError> => {
+export const useGetSearchPortfolio = (
+  hairStyle: string[],
+): UseQueryResult<SearchPortfolioProps[][], AxiosError> => {
   return useQuery({
     queryKey: ['get-search-porfolio', hairStyle],
-    queryFn: () => getSearchPortfolio(hairStyle),
-    select: (data) => data.data,
+    queryFn: () => {
+      const requests = hairStyle.map((style) => getSearchPortfolio(style));
+      return Promise.all(requests).then((responses) =>
+        responses.map((response) => response),
+      );
+    },
   });
 };

@@ -34,7 +34,7 @@ const config: Config = {
         400: '#FF5E5E',
       },
     },
-    zIndex: { header: '300', nav: '400', modal: '500' },
+    zIndex: { above: '100', header: '300', nav: '400', modal: '500' },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

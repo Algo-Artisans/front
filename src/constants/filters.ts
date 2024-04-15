@@ -20,7 +20,7 @@ export const FILTERS: filterProps[] = [
   { permStyle: '단발 C컬펌' },
   { permStyle: '장발 C컬펌' },
   { permStyle: '단발 레이어드펌' },
-  { permStyle: '중단발 레이어드펌' },
+  { permStyle: '중단발레이어드펌' },
   { cutStyle: '보브컷' },
   { cutStyle: '숏컷' },
   { cutStyle: '레이어드컷' },

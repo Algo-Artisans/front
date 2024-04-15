@@ -2,12 +2,14 @@
 
 import { useGetUserInfo } from '../api/user/useGetUserInfo';
 import useGetS3Image from '../api/user/useGetS3Image';
+import Home from '../../../public/assets/icons/home_35.svg';
 
 import { useEffect, useState } from 'react';
 import UserCard from '@/components/user/userCard';
 import { STYLES } from '@/constants/styles';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { FILENAMES } from '@/constants/fileNames';
+import FloatingActionButton from '@/components/user/FloatingActionButton';
 
 export default function Page() {
   const { data: userInfo } = useGetUserInfo();
@@ -45,7 +47,12 @@ export default function Page() {
 
   const hairTitle: string =
     STYLES.find((style) => style.id === userInfo?.faceShapeBest)?.title || '';
+  const { push } = useRouter();
 
+  //NOTE : 카카오 서버로 인가 요청
+  const handleClickHomeButton = () => {
+    push('/');
+  };
   return (
     <div className="flex flex-col px-[36px] mt-[75px] gap-[20px] items-center justify-center">
       <header className="title-32 text-grey-900 text-center">
@@ -62,6 +69,12 @@ export default function Page() {
         faceShapeBest={userInfo?.faceShapeBest || ''}
         faceShapeWorst={userInfo?.faceShapeWorst || ''}
       />
+      <FloatingActionButton
+        className="p-0 fixed bottom-5 right-3 bg-primary-300"
+        onClick={handleClickHomeButton}
+      >
+        <Home />
+      </FloatingActionButton>
     </div>
   );
 }
