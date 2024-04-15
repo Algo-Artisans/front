@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <QueryClientProviders>
       <html lang="en">
-        <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto">
+        <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto scrollbar-hide">
           {children}
         </body>
       </html>

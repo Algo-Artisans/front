@@ -19,7 +19,7 @@ const ImageStyleAttribute = {
   rLarge: 'w-[104px] h-[104px] rounded-full',
   small: 'w-[81px] h-[91px] rounded-[5px]',
   medium: 'w-[138px] h-[150px] rounded-[10px]',
-  large: 'w-[162px] h-[177px] rounded-[5px]',
+  large: 'w-[163px] h-[177px] rounded-[5px]',
   extraLarge: 'w-[244px] h-[307px]',
 };
 

@@ -1,0 +1,16 @@
+export const STYLEFILTERS = [
+  { style: '사이드뱅' },
+  { style: '아이롱펌' },
+  { style: '히피펌' },
+  { style: '스트레이트' },
+  { style: '단발 C컬펌' },
+  { style: '장발 C컬펌' },
+  { style: '단발 레이어드펌' },
+  { style: '중단발 레이어드펌' },
+  { style: '보브컷' },
+  { style: '숏컷' },
+  { style: '레이어드컷' },
+  { style: '샤밍컷' },
+  { style: '사이드뱅' },
+  { style: '태슬컷' },
+];
