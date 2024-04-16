@@ -4,8 +4,10 @@ import SmallRectangleImage from '../../../../public/assets/icons/rectangle_small
 import HeartClickButton from '@/components/common/HeartClickButton';
 import ImageContainer from '@/components/common/Image';
 import Tag from '@/components/common/Tag';
+import { showCardVariants } from '@/constants/motion';
 import { PROFILE } from '@/constants/profile';
 import { cn } from '@/utils/cn';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { HTMLAttributes } from 'react';
 
@@ -46,7 +48,13 @@ export default function DesignerCard({
   };
 
   return (
-    <div className={cn('flex justify-center w-full')}>
+    <motion.div
+      variants={showCardVariants}
+      animate={['animate', 'opacity']}
+      initial="initial"
+      exit="exit"
+      className={cn('flex justify-center w-full')}
+    >
       <div
         className={cn(
           'relative flex flex-col justify-center gap-[8px] h-[175px] w-full bg-white rounded-[10px] px-[16px] py-[18px]',
@@ -110,6 +118,6 @@ export default function DesignerCard({
         </div>
       </div>
       ;
-    </div>
+    </motion.div>
   );
 }

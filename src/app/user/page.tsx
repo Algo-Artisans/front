@@ -10,6 +10,8 @@ import UserCard from '@/components/user/userCard';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FILENAMES } from '@/constants/fileNames';
 import FloatingActionButton from '@/components/user/FloatingActionButton';
+import { motion } from 'framer-motion';
+import { showCardVariants, showTextVariants } from '@/constants/motion';
 
 export default function Page() {
   const { data: userInfo } = useGetUserInfo();
@@ -65,22 +67,35 @@ export default function Page() {
   };
   return (
     <div className="flex flex-col px-[36px] mt-[75px] gap-[20px] items-center justify-center">
-      <header className="title-32 text-grey-900 text-center">
+      <motion.div
+        variants={showTextVariants}
+        animate={['animate', 'opacity']}
+        initial="initial"
+        exit="exit"
+        className="title-32 text-grey-900 text-center"
+      >
         {userInfo?.nickname}님은 <br />
         {hairTitle}
-        <span className="text-primary-500"> {faceShape}</span>
-      </header>
-      <UserCard
-        nickname={userInfo?.nickname || ''}
-        bestImageUrl={generatedBestImage?.url || ''}
-        worstImageUrl={generatedWorstImage?.url || ''}
-        isBest={isBest}
-        onToggleStyle={handleToggleStyle}
-        faceShapeBest={userInfo?.faceShapeBest || ''}
-        faceShapeWorst={userInfo?.faceShapeWorst || ''}
-        styleList={styleList}
-        styleDescription={styleDescription}
-      />
+        <p className="text-primary-500"> {faceShape}</p>
+      </motion.div>
+      <motion.div
+        variants={showCardVariants}
+        animate={['animate', 'opacity']}
+        initial="initial"
+        exit="exit"
+      >
+        <UserCard
+          nickname={userInfo?.nickname || ''}
+          bestImageUrl={generatedBestImage?.url || ''}
+          worstImageUrl={generatedWorstImage?.url || ''}
+          isBest={isBest}
+          onToggleStyle={handleToggleStyle}
+          faceShapeBest={userInfo?.faceShapeBest || ''}
+          faceShapeWorst={userInfo?.faceShapeWorst || ''}
+          styleList={styleList}
+          styleDescription={styleDescription}
+        />
+      </motion.div>
       <FloatingActionButton
         className="p-0 fixed bottom-5 right-3 bg-primary-300"
         onClick={handleClickHomeButton}
