@@ -45,7 +45,7 @@ export default function UserCard({
         alt={nickname}
       />
       {/* TODO: 캐러셀 넣을 경우 stepIcon 넣기 */}
-      <div className="flex flex-col justify-start px-[50px] gap-y-[52px] mt-[30px]">
+      <div className="flex flex-col justify-start px-[40px] gap-y-[52px] mt-[30px]">
         <div className="flex flex-col gap-[34px]">
           <p className="subtitle-20 text-white">
             {isBest ? '나한테 꼭 맞는 헤어 유형' : '내가 피하면 좋은 헤어 유형'}
