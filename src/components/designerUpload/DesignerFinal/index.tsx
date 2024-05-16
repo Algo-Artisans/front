@@ -6,15 +6,15 @@ import { useRouter } from 'next/navigation';
 
 export default function DesignerFinal() {
   const { push } = useRouter();
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     push('/designerList');
-  //   }, 2000);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      push('/designerList');
+    }, 2000);
 
-  //   return () => {
-  //     clearTimeout(timeoutId);
-  //   };
-  // }, []);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col w-full h-full justify-center items-center gap-y-[40px]">
