@@ -18,7 +18,6 @@ export const useFilterSelection = () => {
       setSelectedStyles(selectedStyles.filter((style) => style !== styleName));
     } else {
       setSelectedStyles([...selectedStyles, styleName]);
-      console.log(selectedStyles);
     }
   };
 
