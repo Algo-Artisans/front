@@ -1,5 +1,3 @@
-'use client';
-
 import CheckSmallFull from '../../../../public/assets/icons/checked_full_small_12.svg';
 import CheckSmallEmpty from '../../../../public/assets/icons/checked_empty_small_12.svg';
 import RadioFull from '../../../../public/assets/icons/radio_full_12.svg';
