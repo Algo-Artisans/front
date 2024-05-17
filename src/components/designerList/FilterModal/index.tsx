@@ -5,90 +5,84 @@ import CheckSmallEmpty from '../../../../public/assets/icons/checked_empty_small
 import RadioFull from '../../../../public/assets/icons/radio_full_12.svg';
 import RadioEmpty from '../../../../public/assets/icons/radio_empty_12.svg';
 
-import {
-  FILTERS,
-  cutFilterProps,
-  permFilterProps,
-  sortFilterProps,
-} from '@/constants/filters';
 import { cn } from '@/utils/cn';
 import CTAButton from '@/components/common/CTAButton';
 import { STYLEFILTERS } from '@/constants/stylefilters';
+import { useEffect, useState } from 'react';
+import { CHECKBOX_FILTERS } from '@/constants/checkboxFilters';
+import { DROPDOWN_FILTERS } from '@/constants/dropdownFilters';
 
 interface FilterProps {
-  selectedStyles: string[];
-  permIsSelected: boolean[];
-  cutIsSelected: boolean[];
-  selectedSortIndex: number;
-  setPermIsSelected: (value: boolean[]) => void;
-  setCutIsSelected: (value: boolean[]) => void;
-  setSelectedStyles: (value: string[]) => void;
-  setSelectedSortIndex: (value: number) => void;
-  onClose: () => void;
+  selectedStyles: string;
+  selectedDropdown: string;
+  onClose: (selectedStyles: string, dropdownValue: string) => void;
+  isOpen: boolean;
 }
 
 export default function FilterModal({
-  selectedSortIndex,
   selectedStyles,
-  permIsSelected,
-  cutIsSelected,
-  setCutIsSelected,
-  setPermIsSelected,
-  setSelectedSortIndex,
-  setSelectedStyles,
+  selectedDropdown,
   onClose,
+  isOpen,
 }: FilterProps) {
+  const [selectedOptions, setSelectedOptions] = useState('');
+  const [selectedDropdownOption, setSelectedDropdownOption] =
+    useState(selectedDropdown);
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedOptions(selectedStyles);
+    }
+  }, [isOpen, selectedStyles]);
+
   const handleClickCheck = (index: number, filterType: string) => {
-    let newIsSelected;
+    setIsChecked(!isChecked);
+    let newSelectedOptions: string[] = [];
+    if (selectedOptions) {
+      newSelectedOptions = selectedOptions.split(',');
+    }
+
+    let styleIndex = 0;
+
     switch (filterType) {
       case 'perm':
-        newIsSelected = [...permIsSelected];
-        newIsSelected[index] = !newIsSelected[index];
-        setPermIsSelected(newIsSelected);
-        if (newIsSelected[index]) {
-          if (!selectedStyles.includes(STYLEFILTERS[index].style)) {
-            setSelectedStyles([...selectedStyles, STYLEFILTERS[index].style]);
-          }
-        } else {
-          setSelectedStyles(
-            selectedStyles.filter(
-              (style) => style !== STYLEFILTERS[index].style,
-            ),
-          );
-        }
+        styleIndex = index;
         break;
       case 'cut':
-        newIsSelected = [...cutIsSelected];
-        newIsSelected[index] = !newIsSelected[index];
-        setCutIsSelected(newIsSelected);
-        if (newIsSelected[index]) {
-          if (!selectedStyles.includes(STYLEFILTERS[index + 8].style)) {
-            setSelectedStyles([
-              ...selectedStyles,
-              STYLEFILTERS[index + 8].style,
-            ]);
-          }
-        } else {
-          setSelectedStyles(
-            selectedStyles.filter(
-              (style) => style !== STYLEFILTERS[index + 8].style,
-            ),
-          );
-        }
-        break;
-      case 'sort':
-        setSelectedSortIndex(index === selectedSortIndex ? 0 : index);
+        styleIndex = index + 8;
         break;
       default:
         break;
     }
+
+    if (styleIndex !== -1) {
+      const style = STYLEFILTERS[styleIndex].style;
+
+      if (newSelectedOptions.includes(style)) {
+        newSelectedOptions = newSelectedOptions.filter(
+          (option) => option !== style,
+        );
+      } else {
+        newSelectedOptions.push(style);
+        console.log(newSelectedOptions);
+      }
+
+      setSelectedOptions(
+        newSelectedOptions.length > 0 ? newSelectedOptions.join(',') : '',
+      );
+    }
+  };
+
+  const handleDropdownClick = (category: string) => {
+    setSelectedDropdownOption(category);
   };
 
   const handleOutsideClick: React.MouseEventHandler<HTMLDivElement> = (
     event,
   ) => {
     if (event.target === event.currentTarget) {
-      onClose();
+      onClose(selectedOptions, selectedDropdownOption);
     }
   };
 
@@ -99,7 +93,7 @@ export default function FilterModal({
   };
 
   const handleSubmitButton = () => {
-    onClose();
+    onClose(selectedOptions, selectedDropdownOption);
   };
 
   return (
@@ -117,68 +111,74 @@ export default function FilterModal({
           헤어스타일
         </p>
         <p className="caption-12 w-full text-left">펌</p>
-        {FILTERS.filter(
-          (filter): filter is permFilterProps => 'permStyle' in filter,
-        ).map((filter, index) => (
-          <div
-            key={index}
-            className="flex flex-wrap w-1/3 items-center gap-x-[3px]"
-          >
-            <label>
-              <input
-                type="checkbox"
-                className="hidden"
-                onChange={() => handleClickCheck(index, 'perm')}
-              />
-              {permIsSelected[index] ? <CheckSmallFull /> : <CheckSmallEmpty />}
-            </label>
-            <span className="caption-10">{filter.permStyle}</span>
-          </div>
-        ))}
+        {CHECKBOX_FILTERS.filter((filter) => filter.category === 'perm').map(
+          (filter, index) => (
+            <div
+              key={index}
+              className="flex flex-wrap w-1/3 items-center gap-x-[3px]"
+            >
+              <label>
+                <input
+                  type="checkbox"
+                  className="hidden"
+                  onChange={() => handleClickCheck(index, 'perm')}
+                />
+                {selectedOptions.includes(filter.style) ? (
+                  <CheckSmallFull />
+                ) : (
+                  <CheckSmallEmpty />
+                )}
+              </label>
+              <span className="caption-10">{filter.style}</span>
+            </div>
+          ),
+        )}
         <p className="caption-12 w-full pt-[10px]">커트</p>
-        {FILTERS.filter(
-          (filter): filter is cutFilterProps => 'cutStyle' in filter,
-        ).map((filter, index) => (
-          <div
-            key={index}
-            className="flex flex-wrap gap-[6px] w-1/3 items-center"
-          >
-            {/* 체크박스 */}
-            <label>
-              <input
-                type="checkbox"
-                className="hidden"
-                onChange={() => handleClickCheck(index, 'cut')}
-              />
-              {cutIsSelected[index] ? <CheckSmallFull /> : <CheckSmallEmpty />}
-            </label>
-            <span className="caption-10">{filter.cutStyle}</span>
-          </div>
-        ))}
-        {/* 정렬순 항목들 */}
+        {CHECKBOX_FILTERS.filter((filter) => filter.category === 'cut').map(
+          (filter, index) => (
+            <div
+              key={index}
+              className="flex flex-wrap gap-[6px] w-1/3 items-center"
+            >
+              <label>
+                <input
+                  type="checkbox"
+                  className="hidden"
+                  onChange={() => handleClickCheck(index, 'cut')}
+                />
+                {selectedOptions.includes(filter.style) ? (
+                  <CheckSmallFull />
+                ) : (
+                  <CheckSmallEmpty />
+                )}
+              </label>
+              <span className="caption-10">{filter.style}</span>
+            </div>
+          ),
+        )}
         <p className="caption-12 w-full text-left border-b-[1px] border-grey-300 pb-[8px]">
           정렬순
         </p>
-        {FILTERS.filter(
-          (filter): filter is sortFilterProps => 'sortStyle' in filter,
-        ).map((filter, index) => (
+        {DROPDOWN_FILTERS.map((filter, index) => (
           <div
             key={index}
             className="flex flex-wrap gap-[6px] w-1/3 items-center"
           >
-            {/* 라디오 버튼 */}
             <label>
               <input
                 type="radio"
                 className="hidden"
-                onChange={() => handleClickCheck(index, 'sort')}
+                onChange={() => handleDropdownClick(filter.category)}
               />
-              {index === selectedSortIndex ? <RadioFull /> : <RadioEmpty />}
+              {selectedDropdownOption === filter.category ? (
+                <RadioFull />
+              ) : (
+                <RadioEmpty />
+              )}
             </label>
-            <span className="caption-10">{filter.sortStyle}</span>
+            <span className="caption-10">{filter.category}</span>
           </div>
         ))}
-        {/* 적용하기 버튼 */}
         <div className="flex justify-end w-full mt-[10px]">
           <CTAButton
             size={'small'}

@@ -11,7 +11,7 @@ interface CTAButtonProps extends HTMLAttributes<HTMLButtonElement> {
 }
 
 const CTAButtonStyleAttribute = {
-  small: 'w-[74px] h-[29px] caption-12 disabled:bg-gray-300 bg-primary-300',
+  small: 'w-[74px] h-[29px] caption-12 disabled:bg-grey-300 bg-primary-300',
   medium: 'w-[168px] h-[56px] caption-16',
   large: 'w-[301px] h-[56px] caption-16',
 };
