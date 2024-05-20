@@ -3,6 +3,9 @@ import HomeIcon from '../../public/assets/icons/home_35.svg';
 import ProfileIcon from '../../public/assets/icons/my_profile_35.svg';
 
 import { ReactNode } from 'react';
+import Cookie from 'js-cookie';
+
+const portfolioId = Cookie.get('portfolioId');
 
 export interface NavigationItemType {
   icon: ReactNode;
@@ -17,7 +20,7 @@ export const NAVIGATION: NavigationItemType[] = [
     icon: AiCameraIcon,
     key: 'user',
     name: 'AiCam',
-    route: 'http://34.64.51.207:5000/',
+    route: 'http://111.229.192.30:5000',
     routeName: 'AI 헤어',
   },
   {
@@ -31,7 +34,7 @@ export const NAVIGATION: NavigationItemType[] = [
     icon: ProfileIcon,
     key: 'mypage',
     name: 'MyPage',
-    route: '/mypage',
+    route: `/mypage?portfolioId=${portfolioId}`,
     routeName: '마이페이지',
   },
 ];

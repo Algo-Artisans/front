@@ -23,3 +23,26 @@ export const showCardVariants: Variants = {
   },
   opacity: { opacity: 1, transition: { duration: 0.5 } },
 };
+
+export const rotateButtonVariants: Variants = {
+  active: { rotate: [0, -45] },
+  inactive: { rotate: 0 },
+};
+
+export const openHorizontalButtonItem: Variants = {
+  closed: { opacity: 0 },
+  open: { opacity: 1 },
+};
+
+export const openHorizontalButtonContainer: Variants = {
+  open: {
+    transition: {
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+    },
+    opacity: 1,
+  },
+  closed: {
+    opacity: 0,
+  },
+};
