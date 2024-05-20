@@ -4,13 +4,14 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
 interface GetUserInfoProps {
-  faceShapeBest: string;
-  faceShapeWorst: string;
-  gender: string;
   kakaoNickname: string;
-  nickname: string;
   picture: string;
   role: string;
+  gender: string;
+  nickname: string;
+  faceShapeBest: string;
+  faceShapeWorst: string;
+  kakaoId: string;
 }
 
 const getUserInfo = (): Promise<ApiResponse<GetUserInfoProps>> => {

@@ -8,13 +8,12 @@ interface GetLikesProps {
 }
 
 const getMyLikes = (): Promise<ApiResponse<GetLikesProps>> => {
-  return axiosRequest('get', `/api/v1/portfolios`);
+  return axiosRequest('get', `/api/v1/myPortfolioLikes`);
 };
 
 export const useGetMyLikes = (): UseQueryResult<GetLikesProps, AxiosError> => {
   return useQuery({
     queryKey: ['get-my-likes'],
     queryFn: () => getMyLikes(),
-    select: (data) => data.data,
   });
 };
