@@ -40,6 +40,8 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:10.4.18"],\
           ["axios", "npm:1.6.8"],\
           ["clsx", "npm:2.1.0"],\
+          ["embla-carousel", "npm:8.0.4"],\
+          ["embla-carousel-react", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:8.0.4"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:14.1.4"],\
           ["eslint-config-prettier", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:9.1.0"],\
@@ -6586,6 +6588,61 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["embla-carousel", [\
+      ["npm:8.0.4", {\
+        "packageLocation": "./.yarn/cache/embla-carousel-npm-8.0.4-78f6fb6a5a-f20e07d022.zip/node_modules/embla-carousel/",\
+        "packageDependencies": [\
+          ["embla-carousel", "npm:8.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["embla-carousel-react", [\
+      ["npm:8.0.4", {\
+        "packageLocation": "./.yarn/cache/embla-carousel-react-npm-8.0.4-5f1cf2e339-6ef8090e61.zip/node_modules/embla-carousel-react/",\
+        "packageDependencies": [\
+          ["embla-carousel-react", "npm:8.0.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:8.0.4", {\
+        "packageLocation": "./.yarn/__virtual__/embla-carousel-react-virtual-7bfc578ae4/0/cache/embla-carousel-react-npm-8.0.4-5f1cf2e339-6ef8090e61.zip/node_modules/embla-carousel-react/",\
+        "packageDependencies": [\
+          ["embla-carousel-react", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:8.0.4"],\
+          ["@types/react", "npm:18.2.67"],\
+          ["embla-carousel", "npm:8.0.4"],\
+          ["embla-carousel-reactive-utils", "virtual:7bfc578ae4b5ff288c19ce5ec4c296cc96e14858d50e32b7ada268aef16318fb2dd5ca175e009edef66e96c5d7933fa20385545ca2bc17bc96893ebb7410444b#npm:8.0.4"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["embla-carousel-reactive-utils", [\
+      ["npm:8.0.4", {\
+        "packageLocation": "./.yarn/cache/embla-carousel-reactive-utils-npm-8.0.4-a6989e0d47-4178011f8d.zip/node_modules/embla-carousel-reactive-utils/",\
+        "packageDependencies": [\
+          ["embla-carousel-reactive-utils", "npm:8.0.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:7bfc578ae4b5ff288c19ce5ec4c296cc96e14858d50e32b7ada268aef16318fb2dd5ca175e009edef66e96c5d7933fa20385545ca2bc17bc96893ebb7410444b#npm:8.0.4", {\
+        "packageLocation": "./.yarn/__virtual__/embla-carousel-reactive-utils-virtual-733d4a9118/0/cache/embla-carousel-reactive-utils-npm-8.0.4-a6989e0d47-4178011f8d.zip/node_modules/embla-carousel-reactive-utils/",\
+        "packageDependencies": [\
+          ["embla-carousel-reactive-utils", "virtual:7bfc578ae4b5ff288c19ce5ec4c296cc96e14858d50e32b7ada268aef16318fb2dd5ca175e009edef66e96c5d7933fa20385545ca2bc17bc96893ebb7410444b#npm:8.0.4"],\
+          ["@types/embla-carousel", null],\
+          ["embla-carousel", "npm:8.0.4"]\
+        ],\
+        "packagePeers": [\
+          "@types/embla-carousel",\
+          "embla-carousel"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["emoji-regex", [\
       ["npm:8.0.0", {\
         "packageLocation": "./.yarn/cache/emoji-regex-npm-8.0.0-213764015c-b6053ad399.zip/node_modules/emoji-regex/",\
@@ -9076,6 +9133,8 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:10.4.18"],\
           ["axios", "npm:1.6.8"],\
           ["clsx", "npm:2.1.0"],\
+          ["embla-carousel", "npm:8.0.4"],\
+          ["embla-carousel-react", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:8.0.4"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:14.1.4"],\
           ["eslint-config-prettier", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:9.1.0"],\
