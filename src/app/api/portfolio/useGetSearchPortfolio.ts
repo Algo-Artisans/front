@@ -40,15 +40,11 @@ const getSearchPortfolio = (
 };
 
 export const useGetSearchPortfolio = (
-  hairStyle: string[],
-): UseQueryResult<SearchPortfolioProps[][], AxiosError> => {
+  hairStyle: string,
+): UseQueryResult<SearchPortfolioProps[], AxiosError> => {
   return useQuery({
-    queryKey: ['get-search-porfolio', hairStyle],
-    queryFn: () => {
-      const requests = hairStyle.map((style) => getSearchPortfolio(style));
-      return Promise.all(requests).then((responses) =>
-        responses.map((response) => response),
-      );
-    },
+    queryKey: ['get-search-porfolio'],
+    queryFn: () => getSearchPortfolio(hairStyle),
+    enabled: hairStyle !== '',
   });
 };

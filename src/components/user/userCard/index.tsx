@@ -1,22 +1,20 @@
 import MultipleUpwardArrow from '../../../../public/assets/icons/multiple_arrow_upward_25.svg';
+import Carousel from '../Carousel';
 
-import ImageContainer from '@/components/common/Image';
 import Tag from '@/components/common/Tag';
 
 interface userCardProps {
-  nickname: string;
   faceShapeBest: string;
   faceShapeWorst: string;
   isBest: boolean;
-  bestImageUrl: string;
-  worstImageUrl: string;
+  bestImageUrl: string[];
+  worstImageUrl: string[];
   styleList: string[];
   styleDescription: string;
   onToggleStyle: () => void;
 }
 
 export default function UserCard({
-  nickname,
   styleDescription,
   styleList,
   bestImageUrl,
@@ -24,14 +22,6 @@ export default function UserCard({
   isBest,
   onToggleStyle,
 }: userCardProps) {
-  // const styleList: string[] = isBest
-  //   ? STYLES.find((style) => style.id === faceShapeBest)?.hairStyle || []
-  //   : STYLES.find((style) => style.id === faceShapeWorst)?.hairStyle || [];
-
-  // const styleDescription: string = isBest
-  //   ? STYLES.find((style) => style.id === faceShapeBest)?.description || ''
-  //   : STYLES.find((style) => style.id === faceShapeWorst)?.description || '';
-
   return (
     <div className="relative flex flex-col items-center w-full h-full bg-secondary-900 rounded-[20px] pt-[40px] gap-[38px]">
       <p className="title-24 text-white text-center px-[30px]">
@@ -39,11 +29,7 @@ export default function UserCard({
         <span className="text-primary-300">{isBest ? 'BEST ' : 'WORST '}</span>
         헤어스타일
       </p>
-      <ImageContainer
-        type={'extraLarge'}
-        src={isBest ? bestImageUrl : worstImageUrl}
-        alt={nickname}
-      />
+      <Carousel images={isBest ? bestImageUrl : worstImageUrl} />
       {/* TODO: 캐러셀 넣을 경우 stepIcon 넣기 */}
       <div className="flex flex-col justify-start px-[40px] gap-y-[52px] mt-[30px]">
         <div className="flex flex-col gap-[34px]">

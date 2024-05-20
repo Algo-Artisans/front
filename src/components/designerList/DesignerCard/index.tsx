@@ -5,7 +5,6 @@ import HeartClickButton from '@/components/common/HeartClickButton';
 import ImageContainer from '@/components/common/Image';
 import Tag from '@/components/common/Tag';
 import { showCardVariants } from '@/constants/motion';
-import { PROFILE } from '@/constants/profile';
 import { cn } from '@/utils/cn';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -13,6 +12,7 @@ import { HTMLAttributes } from 'react';
 
 interface DesignerCardProps extends HTMLAttributes<HTMLDivElement> {
   designerName: string;
+  profileImageUrl: string;
   workPlace: string;
   hairName1: string;
   hairName2: string;
@@ -22,10 +22,12 @@ interface DesignerCardProps extends HTMLAttributes<HTMLDivElement> {
   imageUrl3: string;
   imageUrl4: string;
   portfolioId: number;
+  likesCount: number;
 }
 
 export default function DesignerCard({
   designerName,
+  profileImageUrl,
   workPlace,
   hairName1,
   hairName2,
@@ -35,14 +37,10 @@ export default function DesignerCard({
   imageUrl3,
   imageUrl4,
   portfolioId,
+  likesCount,
 }: DesignerCardProps) {
-  const profileImgUrl: string =
-    PROFILE.find((profile) => profile.designerName === designerName)
-      ?.imageUrl || '';
-
   const { push } = useRouter();
 
-  //NOTE : 카카오 서버로 인가 요청
   const handleMoveToDetail = () => {
     push(`/designerList/${portfolioId}`);
   };
@@ -60,12 +58,12 @@ export default function DesignerCard({
           'relative flex flex-col justify-center gap-[8px] h-[175px] w-full bg-white rounded-[10px] px-[16px] py-[18px]',
         )}
       >
-        <div className="flex justify-between items-center gap-[15px]">
-          {profileImgUrl ? (
+        <div className="flex justify-between items-center gap-[10px]">
+          {profileImageUrl ? (
             <ImageContainer
               type={'rSmall'}
-              src={profileImgUrl}
-              alt={profileImgUrl}
+              src={profileImageUrl}
+              alt={profileImageUrl}
               quality={50}
               onClick={handleMoveToDetail}
             />
@@ -89,28 +87,28 @@ export default function DesignerCard({
               </Tag>
             </div>
           </div>
-          <HeartClickButton
-            type={'small'}
-            className="absolute top-[15px] right-[10px]"
-          />
+          <div className="flex flex-col justify-center items-center cursor-default">
+            <HeartClickButton className="cursor-default" type={'small'} />
+            <p>{likesCount}</p>
+          </div>
         </div>
         <div className="flex gap-[3px]">
-          {imageUrl1 != 'null' ? (
+          {imageUrl1 ? (
             <ImageContainer type={'small'} src={imageUrl1} alt={imageUrl1} />
           ) : (
             <SmallRectangleImage />
           )}
-          {imageUrl2 != 'null' ? (
+          {imageUrl2 ? (
             <ImageContainer type={'small'} src={imageUrl2} alt={imageUrl2} />
           ) : (
             <SmallRectangleImage />
           )}
-          {imageUrl3 != 'null' ? (
+          {imageUrl3 ? (
             <ImageContainer type={'small'} src={imageUrl3} alt={imageUrl3} />
           ) : (
             <SmallRectangleImage />
           )}
-          {imageUrl4 != 'null' ? (
+          {imageUrl4 ? (
             <ImageContainer type={'small'} src={imageUrl4} alt={imageUrl4} />
           ) : (
             <SmallRectangleImage />

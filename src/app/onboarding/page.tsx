@@ -14,9 +14,7 @@ export default function Page() {
   const handleRoleClick = (selectedRole: string) => {
     setRole(selectedRole);
     postRoleMutation.mutate(selectedRole);
-    push(
-      '/designerList?hairStyle1=단발 C컬펌&hairStyle2=보브컷&hairStyle3=숏컷',
-    );
+    push('/designerList?hairStyle1=&hairStyle2=&hairStyle3=&dropdown=최신순');
   };
 
   return (

@@ -10,7 +10,7 @@ export default function FloatingActionButton({
   return (
     <Button
       className={cn(
-        'w-[45px] h-[45px] rounded-[20px] shadow-button',
+        'w-[45px] h-[45px] rounded-[20px] shadow-button p-0',
         className,
       )}
       {...props}

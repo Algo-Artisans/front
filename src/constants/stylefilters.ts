@@ -1,5 +1,5 @@
 export const STYLEFILTERS = [
-  { style: '사이드뱅' },
+  { style: '빌드펌' },
   { style: '아이롱펌' },
   { style: '히피펌' },
   { style: '스트레이트' },
@@ -13,4 +13,5 @@ export const STYLEFILTERS = [
   { style: '샤밍컷' },
   { style: '사이드뱅' },
   { style: '태슬컷' },
+  { style: '허쉬컷' },
 ];

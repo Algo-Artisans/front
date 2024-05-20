@@ -10,6 +10,9 @@
 }
 
 @layer utilities {
+  .title-40{
+    @apply text-[40px]/[130%] tracking-[-0.02em] font-bold;
+  }
   .title-32 {
     @apply text-[32px]/[130%] tracking-[-0.02em] font-bold;
   }

@@ -12,6 +12,10 @@ const nextConfig = {
       {
         hostname: 'moraktest-bucket.s3.ap-northeast-2.amazonaws.com',
       },
+      {
+        protocol: 'http',
+        hostname: 'k.kakaocdn.net',
+      },
     ],
   },
 };
