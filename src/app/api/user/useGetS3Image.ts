@@ -1,51 +1,103 @@
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+// import { useQuery, UseQueryResult } from '@tanstack/react-query';
+// import { AxiosError } from 'axios';
+
+// interface S3ImageProps {
+//   url: string;
+// }
+
+// const s3Client = new S3Client({
+//   region: process.env.NEXT_PUBLIC_S3_REGION,
+//   credentials: {
+//     accessKeyId: process.env.NEXT_PUBLIC_KEY_ID || '',
+//     secretAccessKey: process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY || '',
+//   },
+// });
+
+// const getS3Image = async (objectKey: string): Promise<S3ImageProps> => {
+//   try {
+//     // GetObjectCommand를 사용하여 S3 객체 가져오기
+//     const command = new GetObjectCommand({
+//       Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+//       Key: objectKey,
+//     });
+//     const response = await s3Client.send(command);
+//     let imageUrl: string | undefined;
+
+//     if (response.Body) {
+//       const str = await response.Body.transformToByteArray();
+//       const blob = new Blob([str], { type: 'image/png' });
+
+//       imageUrl = URL.createObjectURL(blob);
+//     }
+
+//     // 이미지 URL 반환
+//     return { url: imageUrl || '' };
+//   } catch (error) {
+//     console.error('S3 이미지 가져오기 실패:', error);
+//     throw error;
+//   }
+// };
+
+// const useGetS3Image = (
+//   bucketName: string,
+// ): UseQueryResult<S3ImageProps, AxiosError> => {
+//   return useQuery({
+//     queryKey: ['get-s3-image', bucketName],
+//     queryFn: () => getS3Image(bucketName),
+//   });
+// };
+
+// export default useGetS3Image;
+
+// useGetS3Image.ts 파일
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-interface S3ImageProps {
-  url: string;
+export interface S3ImageProps {
+  urls: string[]; // 여러 이미지 URL을 저장하는 배열
 }
 
-const s3Client = new S3Client({
-  region: process.env.NEXT_PUBLIC_S3_REGION,
-  credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_KEY_ID || '',
-    secretAccessKey: process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY || '',
-  },
-});
-
-const getS3Image = async (objectKey: string): Promise<S3ImageProps> => {
+const getS3Image = async (objectKeys: string[]): Promise<S3ImageProps> => {
   try {
-    // GetObjectCommand를 사용하여 S3 객체 가져오기
-    const command = new GetObjectCommand({
-      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
-      Key: objectKey,
+    const s3Client = new S3Client({
+      region: process.env.NEXT_PUBLIC_S3_REGION,
+      credentials: {
+        accessKeyId: process.env.NEXT_PUBLIC_KEY_ID || '',
+        secretAccessKey: process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY || '',
+      },
     });
-    const response = await s3Client.send(command);
-    let imageUrl: string | undefined;
 
-    if (response.Body) {
-      const str = await response.Body.transformToByteArray();
-      const blob = new Blob([str], { type: 'image/png' });
+    const images = await Promise.all(
+      objectKeys.map(async (objectKey) => {
+        const command = new GetObjectCommand({
+          Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+          Key: objectKey,
+        });
+        const response = await s3Client.send(command);
 
-      imageUrl = URL.createObjectURL(blob);
-    }
+        if (response.Body) {
+          const str = await response.Body.transformToByteArray();
+          const blob = new Blob([str], { type: 'image/png' });
+          return URL.createObjectURL(blob);
+        }
+        return ''; // 이미지가 없는 경우 빈 문자열 반환
+      }),
+    );
 
-    // 이미지 URL 반환
-    return { url: imageUrl || '' };
+    // 이미지 URL 배열 반환
+    return { urls: images.filter((url) => url !== '') };
   } catch (error) {
     console.error('S3 이미지 가져오기 실패:', error);
     throw error;
   }
 };
 
-const useGetS3Image = (
-  bucketName: string,
+export const useGetS3Image = (
+  objectKeys: string[],
 ): UseQueryResult<S3ImageProps, AxiosError> => {
   return useQuery({
-    queryKey: ['get-s3-image', bucketName],
-    queryFn: () => getS3Image(bucketName),
+    queryKey: ['get-s3-image', objectKeys], // objectKeys를 쿼리 키로 사용
+    queryFn: () => getS3Image(objectKeys),
   });
 };
-
-export default useGetS3Image;
