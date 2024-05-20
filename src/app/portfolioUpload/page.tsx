@@ -1,9 +1,13 @@
 'use client';
 
-import { usePostFile } from '../api/file/usePostFile';
-import { usePostProfile } from '../api/file/usePostProfileFile';
-import { usePostPortfolio } from '../api/portfolio/usePostPortfolio';
+import { usePostFiles } from '../api/file/usePostFile';
+import {
+  PostPortfolioProps,
+  usePostPortfolio,
+} from '../api/portfolio/usePostPortfolio';
+import { usePostSingleFile } from '../api/file/usePostSingleFile';
 
+import Cookie from 'js-cookie';
 import DesignerCertificate from '@/components/designerUpload/DesignerCertificate';
 import DesignerFinal from '@/components/designerUpload/DesignerFinal';
 import DesignerIntroduction from '@/components/designerUpload/DesignerIntroduction';
@@ -16,17 +20,27 @@ import { useFunnel } from '@/hooks/useFunnel';
 import { ChangeEvent, useState } from 'react';
 
 export default function Page() {
-  const [registerData, setRegisterData] = useState({});
-  const { Funnel, Step, step, setStep } = useFunnel(STEPS[0]);
+  const [registerData, setRegisterData] = useState<PostPortfolioProps>({});
+
+  const { Funnel, Step, setStep } = useFunnel(STEPS[0]);
   const [workImageUrls, setWorkImageUrls] = useState<string[]>([]);
+
+  const [isProfileTrue, setIsProfileTrue] = useState(true);
+  const [isCertificateTrue, setIsCertificateTrue] = useState(false);
+
   const [certificateImageUrl, setCertificateImageUrl] = useState('');
   const [profileImageUrl, setProfileImageUrl] = useState('');
 
-  const postFile = usePostFile();
-  const postProfile = usePostProfile();
+  const postFile = usePostFiles();
+  const postSingleFile = usePostSingleFile();
   const postPortfolio = usePostPortfolio();
 
-  const handleChangeMultipleImage = async (
+  if (postPortfolio.data) {
+    const myPortfolioId = String(postPortfolio.data.data.portfolioId);
+    Cookie.set('portfolioId', myPortfolioId);
+  }
+
+  const handleChangeMultipleImages = async (
     e: ChangeEvent<HTMLInputElement>,
   ) => {
     try {
@@ -35,26 +49,39 @@ export default function Page() {
       formData.append('files', example);
       const response = await postFile.mutateAsync(formData);
       const presignedUrl = response[0];
-      if (step === '자격증') {
-        setCertificateImageUrl(presignedUrl);
-        return;
-      }
-      if (step === '작업내용') {
-        setWorkImageUrls([...workImageUrls, presignedUrl]);
-      }
+
+      setWorkImageUrls([...workImageUrls, presignedUrl]);
+      setRegisterData((prevData) => ({
+        ...prevData,
+        [`imageUrl${workImageUrls.length + 1}`]: presignedUrl,
+      }));
     } catch (error) {
       console.error('Image upload error:', error);
     }
   };
 
-  const handleChangeProfileImage = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSingleImage = async (e: ChangeEvent<HTMLInputElement>) => {
     try {
-      const example = (e.target.files as FileList)[0];
-      const formData = new FormData();
-      formData.append('file', example);
-      const response = await postProfile.mutateAsync(formData);
-      const presignedUrl = response;
-      setProfileImageUrl(presignedUrl);
+      const target = e.target.files?.[0];
+      if (target) {
+        const response = await postSingleFile.mutateAsync({
+          certificate: isCertificateTrue,
+          profile: isProfileTrue,
+          file: target,
+        });
+        const presignedUrl = response;
+
+        if (isProfileTrue) {
+          setProfileImageUrl(presignedUrl);
+          setRegisterData({ profileURL: presignedUrl });
+          return;
+        }
+        setCertificateImageUrl(presignedUrl);
+        setRegisterData((prevData) => ({
+          ...prevData,
+          certificateUrl: presignedUrl,
+        }));
+      }
     } catch (error) {
       console.error('Image upload error:', error);
     }
@@ -66,11 +93,13 @@ export default function Page() {
         <Step name="기본정보">
           <DesignerStart
             onNext={(data) => {
-              setRegisterData(data);
+              setRegisterData((prevData) => ({ ...prevData, ...data }));
+              setIsProfileTrue(false);
+              setIsCertificateTrue(true);
               setStep(STEPS[1]);
             }}
             imageUrl={profileImageUrl}
-            onChange={handleChangeProfileImage}
+            onChange={handleChangeSingleImage}
           />
         </Step>
         <Step name="자기소개">
@@ -96,7 +125,7 @@ export default function Page() {
               setStep(STEPS[4]);
             }}
             workImagesUrl={workImageUrls}
-            onChange={handleChangeMultipleImage}
+            onChange={handleChangeMultipleImages}
           />
         </Step>
         <Step name="가격표">
@@ -114,7 +143,7 @@ export default function Page() {
               postPortfolio.mutate(registerData);
             }}
             certificateImageUrl={certificateImageUrl}
-            onChange={handleChangeMultipleImage}
+            onChange={handleChangeSingleImage}
           />
         </Step>
         <Step name="마무리">
