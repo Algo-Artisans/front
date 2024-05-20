@@ -63,7 +63,6 @@ export default function FilterModal({
         );
       } else {
         newSelectedOptions.push(style);
-        console.log(newSelectedOptions);
       }
 
       setSelectedOptions(

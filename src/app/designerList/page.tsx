@@ -1,42 +1,79 @@
 'use client';
 
-import { useGetSearchPortfolio } from '../api/portfolio/useGetSearchPortfolio';
 import FilterIcon from '../../../public/assets/icons/filter_12.svg';
+import { useGetDropDown } from '../api/portfolio/useGetDropDown';
+import { usePostAi } from '../api/ai/usePostAi';
+import { useGetUserInfo } from '../api/user/useGetUserInfo';
+import { useGetAllPortfolio } from '../api/portfolio/useGetAllPortfolio';
 
+import Cookie from 'js-cookie';
 import Button from '@/components/common/Button';
 import DesignerCard from '@/components/designerList/DesignerCard';
 import { useSearchParams } from 'next/navigation';
-import useHandleModal from '@/hooks/useHandleModal';
 import FilterModal from '@/components/designerList/FilterModal';
-import { useFilterSelection } from '@/hooks/useFilterSelection';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import BottomNavigation from '@/components/common/BottomNavigation';
 
 export default function Page() {
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useHandleModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [prevSelectedStyles, setPrevSelectedStyles] = useState('');
+  const [dropdown, setDropdown] = useState('최신순');
+  const postAiMutation = usePostAi();
 
-  const {
-    selectedStyles,
-    permIsSelected,
-    cutIsSelected,
-    selectedSortIndex,
-    setPermIsSelected,
-    setCutIsSelected,
-    setSelectedStyles,
-    setSelectedSortIndex,
-  } = useFilterSelection();
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = (selectedStyles: string, dropdownValue: string) => {
+    setIsModalOpen(false);
+    if (selectedStyles !== prevSelectedStyles) {
+      setPrevSelectedStyles(selectedStyles);
+    }
+    if (dropdownValue !== dropdown) {
+      setDropdown(dropdownValue);
+    }
+  };
+
   const searchParams = useSearchParams();
+  //NOTE: AI 서버로 정보 넘기는 부분
+  const { data: userInfo } = useGetUserInfo();
+  const token = Cookie.get('accessToken');
+  const kakao_id = userInfo?.kakaoId;
+  useEffect(() => {
+    if (token && kakao_id) {
+      postAiMutation.mutate({
+        token: token,
+        kakao_id: kakao_id,
+      });
+    }
+  }, [token, kakao_id]);
 
   useEffect(() => {
-    const hairStyles = [
-      searchParams.get('hairStyle1') || '',
-      searchParams.get('hairStyle2') || '',
-      searchParams.get('hairStyle3') || '',
-    ];
-    setSelectedStyles(hairStyles);
+    const hairStyle1 = searchParams.get('hairStyle1') || '';
+    const hairStyle2 = searchParams.get('hairStyle2') || '';
+    const hairStyle3 = searchParams.get('hairStyle3') || '';
+    if (hairStyle1 && hairStyle2 && hairStyle3) {
+      const prevSelectedStyles = `${hairStyle1},${hairStyle2},${hairStyle3}`;
+      setPrevSelectedStyles(prevSelectedStyles);
+    }
+    const dropdown = searchParams.get('dropdown') || '';
+    setPrevSelectedStyles(prevSelectedStyles);
+    setDropdown(dropdown);
   }, []);
 
-  const { data: searchResults } = useGetSearchPortfolio(selectedStyles);
+  const { data: searchResults, refetch } =
+    prevSelectedStyles === ''
+      ? useGetAllPortfolio()
+      : useGetDropDown(prevSelectedStyles, dropdown);
+
+  useEffect(
+    function refetchSearchResults() {
+      if (prevSelectedStyles !== '' && dropdown !== '') {
+        refetch();
+      }
+    },
+    [prevSelectedStyles, dropdown, refetch],
+  );
 
   return (
     <>
@@ -47,40 +84,42 @@ export default function Page() {
         >
           <p className="flex self-center">필터</p> <FilterIcon />
         </Button>
-        <div className="pt-[30px] flex flex-col gap-[15px]">
-          {searchResults &&
-            searchResults.map((portfolioGroup, index) => (
-              <div key={index} className="flex flex-col gap-[15px]">
-                {portfolioGroup.map((portfolio, innerIndex) => (
-                  <DesignerCard
-                    key={innerIndex}
-                    designerName={portfolio.name}
-                    workPlace={portfolio.workplace}
-                    hairName1={portfolio.hairName1}
-                    hairName2={portfolio.hairName2}
-                    hairName3={portfolio.hairName3}
-                    imageUrl1={portfolio.imageUrl1}
-                    imageUrl2={portfolio.imageUrl2}
-                    imageUrl3={portfolio.imageUrl3}
-                    imageUrl4={portfolio.imageUrl4}
-                    portfolioId={portfolio.portfolioId}
-                  />
-                ))}
+        <div className="w-full h-full flex flex-col gap-[15px] mt-[15px]">
+          {searchResults && searchResults.length > 0 ? (
+            searchResults.map((portfolio, index) => (
+              <div key={index} className="flex flex-col">
+                <DesignerCard
+                  key={index}
+                  designerName={portfolio.name}
+                  profileImageUrl={portfolio.profileURL}
+                  workPlace={portfolio.workplace}
+                  hairName1={portfolio.hairName1}
+                  hairName2={portfolio.hairName2}
+                  hairName3={portfolio.hairName3}
+                  imageUrl1={portfolio.imageUrl1}
+                  imageUrl2={portfolio.imageUrl2}
+                  imageUrl3={portfolio.imageUrl3}
+                  imageUrl4={portfolio.imageUrl4}
+                  portfolioId={portfolio.portfolioId}
+                  likesCount={portfolio.likesCount}
+                />
               </div>
-            ))}
+            ))
+          ) : (
+            <p className="pt-[30px] subtitle-20 text-white text-center">
+              추천순 기능은 아직 개발중이에요! <br />
+              다른 옵션을 선택해주세요👀
+            </p>
+          )}
         </div>
       </div>
+
       {isModalOpen && (
         <FilterModal
           onClose={handleCloseModal}
-          selectedStyles={selectedStyles}
-          permIsSelected={permIsSelected}
-          cutIsSelected={cutIsSelected}
-          selectedSortIndex={selectedSortIndex}
-          setPermIsSelected={setPermIsSelected}
-          setCutIsSelected={setCutIsSelected}
-          setSelectedStyles={setSelectedStyles}
-          setSelectedSortIndex={setSelectedSortIndex}
+          selectedStyles={prevSelectedStyles}
+          isOpen={isModalOpen}
+          selectedDropdown={dropdown}
         />
       )}
       <BottomNavigation />

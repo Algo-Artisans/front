@@ -8,11 +8,39 @@ import DesignerProfile from '@/components/designerDetail/DesignerProfile';
 import { usePathname } from 'next/navigation';
 import ImageContainer from '@/components/common/Image';
 import ShowPriceList from '@/components/designerDetail/ShowPriceList';
+import { usePostLike } from '@/app/api/user/usePostLike';
+import { useEffect, useState } from 'react';
 
 export default function Page() {
   const currentPath = usePathname();
   const portfolioId = Number(currentPath.split('/').pop());
   const { data: designerPortfolio } = useGetMyPortfolio(portfolioId);
+
+  const [isLiked, setIsLiked] = useState(false);
+  const postLikeDesigner = usePostLike();
+
+  const handleHeartClick = () => {
+    setIsLiked(!isLiked);
+  };
+
+  useEffect(() => {
+    if (isLiked) {
+      postLikeDesigner.mutate(portfolioId); // 포트폴리오 ID를 mutate 함수에 전달
+    }
+  }, [isLiked]);
+
+  const hairNames = [
+    { keyword: designerPortfolio?.hairName1 },
+    { keyword: designerPortfolio?.hairName2 },
+    { keyword: designerPortfolio?.hairName3 },
+  ];
+
+  const imageUrls = [
+    designerPortfolio?.imageUrl1,
+    designerPortfolio?.imageUrl2,
+    designerPortfolio?.imageUrl3,
+    designerPortfolio?.imageUrl4,
+  ];
 
   return (
     <>
@@ -43,55 +71,38 @@ export default function Page() {
               styling3={designerPortfolio.styling3}
               styling4={designerPortfolio.styling4}
               workplace={designerPortfolio.workplace}
+              profileImgUrl={designerPortfolio.profileURL}
+              handleHeartClick={handleHeartClick}
             />
             <div className="flex gap-x-[10px] mt-[8px] mb-[30px]">
-              <Tag
-                styleKeyword={designerPortfolio?.hairName1}
-                hashTagTrue={false}
-                className="shadow-tag caption-14"
-              >
-                {designerPortfolio.hairName1}
-              </Tag>
-              <Tag
-                styleKeyword={designerPortfolio.hairName2}
-                hashTagTrue={false}
-                className="shadow-tag caption-14"
-              >
-                {designerPortfolio.hairName2}
-              </Tag>
-              <Tag
-                styleKeyword={designerPortfolio.hairName3}
-                hashTagTrue={false}
-                className="shadow-tag caption-14"
-              >
-                {designerPortfolio.hairName3}
-              </Tag>
+              {hairNames.map((hair, index) => (
+                <Tag
+                  key={index}
+                  styleKeyword={hair.keyword || ''}
+                  hashTagTrue={false}
+                  className="shadow-tag caption-14"
+                >
+                  {hair.keyword}
+                </Tag>
+              ))}
             </div>
+
             <div className="flex flex-col gap-y-[20px]">
               <p className="text-white caption-16">
                 {designerPortfolio.name} 디자이너의 스타일
               </p>
               <div className="flex flex-wrap justify-around gap-x-2 gap-y-4">
-                <ImageContainer
-                  type={'large'}
-                  src={designerPortfolio.imageUrl1}
-                  alt={designerPortfolio.imageUrl1}
-                />
-                <ImageContainer
-                  type={'large'}
-                  src={designerPortfolio.imageUrl2}
-                  alt={designerPortfolio.imageUrl2}
-                />
-                <ImageContainer
-                  type={'large'}
-                  src={designerPortfolio.imageUrl3}
-                  alt={designerPortfolio.imageUrl3}
-                />
-                <ImageContainer
-                  type={'large'}
-                  src={designerPortfolio.imageUrl4}
-                  alt={designerPortfolio.imageUrl4}
-                />
+                {imageUrls.map(
+                  (url, index) =>
+                    url && (
+                      <ImageContainer
+                        key={index}
+                        type={'large'}
+                        src={url}
+                        alt={url}
+                      />
+                    ),
+                )}
               </div>
             </div>
             <div className="flex flex-col gap-y-[20px] mt-[30px]">

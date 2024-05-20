@@ -22,6 +22,7 @@ interface DesignerCardProps extends HTMLAttributes<HTMLDivElement> {
   imageUrl3: string;
   imageUrl4: string;
   portfolioId: number;
+  likesCount: number;
 }
 
 export default function DesignerCard({
@@ -36,6 +37,7 @@ export default function DesignerCard({
   imageUrl3,
   imageUrl4,
   portfolioId,
+  likesCount,
 }: DesignerCardProps) {
   const { push } = useRouter();
 
@@ -56,7 +58,7 @@ export default function DesignerCard({
           'relative flex flex-col justify-center gap-[8px] h-[175px] w-full bg-white rounded-[10px] px-[16px] py-[18px]',
         )}
       >
-        <div className="flex justify-between items-center gap-[15px]">
+        <div className="flex justify-between items-center gap-[10px]">
           {profileImageUrl ? (
             <ImageContainer
               type={'rSmall'}
@@ -85,10 +87,10 @@ export default function DesignerCard({
               </Tag>
             </div>
           </div>
-          <HeartClickButton
-            type={'small'}
-            className="absolute top-[15px] right-[10px]"
-          />
+          <div className="flex flex-col justify-center items-center cursor-default">
+            <HeartClickButton className="cursor-default" type={'small'} />
+            <p>{likesCount}</p>
+          </div>
         </div>
         <div className="flex gap-[3px]">
           {imageUrl1 ? (

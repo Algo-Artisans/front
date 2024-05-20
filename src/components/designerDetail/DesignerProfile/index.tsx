@@ -2,10 +2,9 @@ import InstagramIcon from '../../../../public/assets/icons/instagram_15.svg';
 import PhoneIcon from '../../../../public/assets/icons/phone_15.svg';
 import LocationIcon from '../../../../public/assets/icons/location_16.svg';
 
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, MouseEventHandler } from 'react';
 import ImageContainer from '@/components/common/Image';
 import HeartClickButton from '@/components/common/HeartClickButton';
-import { PROFILE } from '@/constants/profile';
 
 interface DesignerProfileProps extends HTMLAttributes<HTMLDivElement> {
   cost1: string;
@@ -31,7 +30,8 @@ interface DesignerProfileProps extends HTMLAttributes<HTMLDivElement> {
   styling3: string;
   styling4: string;
   workplace: string;
-  // handleHeartClick: MouseEventHandler<HTMLButtonElement>;
+  profileImgUrl: string;
+  handleHeartClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function DesignerProfile({
@@ -40,11 +40,9 @@ export default function DesignerProfile({
   likesCount,
   name,
   phoneNumber,
-  // handleHeartClick,
+  profileImgUrl,
+  handleHeartClick,
 }: DesignerProfileProps) {
-  const profileImgUrl: string =
-    PROFILE.find((profile) => profile.designerName === name)?.imageUrl || '';
-
   return (
     <div className="flex flex-col bg-secondary-900 py-[9px] gap-y-[10px]">
       <div className="flex items-center justify-between">
@@ -64,7 +62,7 @@ export default function DesignerProfile({
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-y-[4px]">
-          <HeartClickButton type={'large'} />
+          <HeartClickButton onClick={handleHeartClick} type={'large'} />
           <span className="text-white caption-13">{likesCount}</span>
         </div>
       </div>
