@@ -20,6 +20,9 @@ export default function Page() {
   const handleClickToMyPortfolio = () => {
     push(`/designerList/${myPortfolioId}`);
   };
+  const handleClickToCreatePortfolio = () => {
+    push(`/portfolioUpload`);
+  };
 
   return (
     <div className="w-full h-full items-center justify-center items-center px-[16px]">
@@ -51,6 +54,9 @@ export default function Page() {
               <p className="title-40">{designerLikesInfo?.totalLikes}개</p>
             </div>
           </div>
+          <MypageLandingButton onClick={handleClickToCreatePortfolio}>
+            <HeartNavyIcon />내 포트폴리오 생성하기
+          </MypageLandingButton>
           <MypageLandingButton onClick={handleClickToMyPortfolio}>
             <HeartNavyIcon />내 포트폴리오 보러가기
           </MypageLandingButton>
