@@ -34,9 +34,8 @@ export default function Page() {
   const postFile = usePostFiles();
   const postSingleFile = usePostSingleFile();
   const postPortfolio = usePostPortfolio();
-
-  if (postPortfolio.data) {
-    const myPortfolioId = String(postPortfolio.data.data.portfolioId);
+  if (postPortfolio.data?.portfolioId) {
+    const myPortfolioId = String(postPortfolio.data.portfolioId);
     Cookie.set('portfolioId', myPortfolioId);
   }
 

@@ -1,8 +1,12 @@
-import { ApiResponse, axiosRequest } from '..';
+import { axiosRequest } from '..';
 
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
+export interface ApiResponse<T> {
+  data: T;
+  portfolioId: number;
+}
 export interface PostPortfolioProps {
   cost1?: string;
   cost2?: string;
