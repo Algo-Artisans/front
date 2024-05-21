@@ -20,7 +20,7 @@ export const NAVIGATION: NavigationItemType[] = [
     icon: AiCameraIcon,
     key: 'user',
     name: 'AiCam',
-    route: 'http://111.229.192.30:5000',
+    route: 'https://111.229.192.30:5000',
     routeName: 'AI 헤어',
   },
   {
