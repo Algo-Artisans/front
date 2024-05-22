@@ -3,9 +3,8 @@ import HomeIcon from '../../public/assets/icons/home_35.svg';
 import ProfileIcon from '../../public/assets/icons/my_profile_35.svg';
 
 import { ReactNode } from 'react';
-import Cookie from 'js-cookie';
 
-const portfolioId = Cookie.get('portfolioId');
+const portfolioId = localStorage.getItem('portfolioId');
 
 export interface NavigationItemType {
   icon: ReactNode;

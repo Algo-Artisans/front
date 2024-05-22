@@ -7,7 +7,6 @@ import {
 } from '../api/portfolio/usePostPortfolio';
 import { usePostSingleFile } from '../api/file/usePostSingleFile';
 
-import Cookie from 'js-cookie';
 import DesignerCertificate from '@/components/designerUpload/DesignerCertificate';
 import DesignerFinal from '@/components/designerUpload/DesignerFinal';
 import DesignerIntroduction from '@/components/designerUpload/DesignerIntroduction';
@@ -36,7 +35,7 @@ export default function Page() {
   const postPortfolio = usePostPortfolio();
   if (postPortfolio.data?.portfolioId) {
     const myPortfolioId = String(postPortfolio.data.portfolioId);
-    Cookie.set('portfolioId', myPortfolioId);
+    localStorage.setItem('portfolioId', myPortfolioId);
   }
 
   const handleChangeMultipleImages = async (
