@@ -1,3 +1,5 @@
+import { toast } from 'sonner';
+
 import { cn } from '@/utils/cn';
 import { HTMLAttributes, ReactNode, useState } from 'react';
 
@@ -22,7 +24,7 @@ export default function PillFilter({
       onSelect(children!.toString());
       return;
     }
-    alert('3개까지 선택 가능합니다:)');
+    toast.info('3개까지 선택 가능합니다:)');
   };
 
   return (
