@@ -4,7 +4,11 @@ import ProfileIcon from '../../public/assets/icons/my_profile_35.svg';
 
 import { ReactNode } from 'react';
 
-const portfolioId = localStorage.getItem('portfolioId');
+let portfolioId: string | null = null;
+
+if (typeof window !== 'undefined') {
+  portfolioId = localStorage.getItem('portfolioId');
+}
 
 export interface NavigationItemType {
   icon: ReactNode;

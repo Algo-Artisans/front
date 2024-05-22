@@ -35,7 +35,9 @@ export default function Page() {
   const postPortfolio = usePostPortfolio();
   if (postPortfolio.data?.portfolioId) {
     const myPortfolioId = String(postPortfolio.data.portfolioId);
-    localStorage.setItem('portfolioId', myPortfolioId);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('portfolioId', myPortfolioId);
+    }
   }
 
   const handleChangeMultipleImages = async (
