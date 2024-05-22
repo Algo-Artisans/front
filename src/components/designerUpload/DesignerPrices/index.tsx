@@ -79,7 +79,7 @@ export default function DesignerPrices({ onNext }: DesignerPricesProps) {
 
       <CTAButton
         size="large"
-        disabled={false}
+        disabled={inputFields.length <= 1}
         onClick={handleClickCTAButton}
         className="absolute bottom-[40px]"
       >
