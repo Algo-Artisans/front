@@ -15,8 +15,6 @@ import { useEffect, useState } from 'react';
 import BottomNavigation from '@/components/common/BottomNavigation';
 
 export default function Page() {
-  localStorage.setItem('portfolioId', '26');
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [prevSelectedStyles, setPrevSelectedStyles] = useState('');
   const [dropdown, setDropdown] = useState('최신순');
