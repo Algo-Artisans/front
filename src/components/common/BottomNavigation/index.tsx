@@ -18,7 +18,7 @@ export default function BottomNavigation({
   return (
     <nav
       className={cn(
-        'h-[70px] w-full flex justify-around items-center gap-[20px] p-[12px] fixed bottom-0 bg-white z-nav',
+        'h-[70px] w-full max-w-[480px] flex justify-around items-center gap-[20px] p-[12px] fixed bottom-0 bg-white z-nav',
         className,
         { ...restProps },
       )}
