@@ -52,10 +52,9 @@ export default function Page() {
     const hairStyle1 = searchParams.get('hairStyle1') || '';
     const hairStyle2 = searchParams.get('hairStyle2') || '';
     const hairStyle3 = searchParams.get('hairStyle3') || '';
-    if (hairStyle1 && hairStyle2 && hairStyle3) {
-      const prevSelectedStyles = `${hairStyle1},${hairStyle2},${hairStyle3}`;
-      setPrevSelectedStyles(prevSelectedStyles);
-    }
+    const prevSelectedStyles = `${hairStyle1},${hairStyle2},${hairStyle3}`;
+    setPrevSelectedStyles(prevSelectedStyles);
+
     const dropdown = searchParams.get('dropdown') || '';
     setPrevSelectedStyles(prevSelectedStyles);
     setDropdown(dropdown);
