@@ -1,3 +1,5 @@
+'use client';
+
 import AiCameraIcon from '../../public/assets/icons/ai_camera_35.svg';
 import HomeIcon from '../../public/assets/icons/home_35.svg';
 import ProfileIcon from '../../public/assets/icons/my_profile_35.svg';
