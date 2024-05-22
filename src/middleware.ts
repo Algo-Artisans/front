@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
 
     const response =
       firstLogin === 'no'
-        ? NextResponse.redirect(new URL('/designerList', request.nextUrl))
+        ? NextResponse.redirect(new URL('/signup', request.nextUrl))
         : NextResponse.redirect(new URL('/signup', request.nextUrl));
 
     if (accessToken) {
