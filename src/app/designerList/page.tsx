@@ -62,7 +62,7 @@ export default function Page() {
   }, []);
 
   const { data: searchResults, refetch } =
-    prevSelectedStyles === ',,'
+    prevSelectedStyles === ',,' || prevSelectedStyles === ''
       ? useGetAllPortfolio()
       : useGetDropDown(prevSelectedStyles, dropdown);
 
