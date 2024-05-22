@@ -22,7 +22,7 @@ import { ChangeEvent, useState } from 'react';
 export default function Page() {
   const [registerData, setRegisterData] = useState<PostPortfolioProps>({});
 
-  const { Funnel, Step, setStep } = useFunnel(STEPS[0]);
+  const { Funnel, Step, setStep } = useFunnel(STEPS[3]);
   const [workImageUrls, setWorkImageUrls] = useState<string[]>([]);
 
   const [isProfileTrue, setIsProfileTrue] = useState(true);
