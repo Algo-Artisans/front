@@ -9,6 +9,8 @@ import ImageContainer from '@/components/common/Image';
 import Image from 'next/image';
 import BottomNavigation from '@/components/common/BottomNavigation';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { showNumberVariants, showTextVariants } from '@/constants/motion';
 
 export default function Page() {
   const { data: userInfo } = useGetUserInfo();
@@ -43,7 +45,15 @@ export default function Page() {
       {userInfo && userInfo.role === 'DESIGNER' && (
         <div className="w-full h-full flex flex-col gap-y-[25px]">
           <div className="w-full h-[175px] flex flex-col gap-[15px]">
-            <p className="subtitle-20">오늘 나의 좋아요 수</p>
+            <motion.p
+              variants={showTextVariants}
+              initial="initial"
+              animate={['animate', 'opacity']}
+              exit="exit"
+              className="subtitle-20"
+            >
+              오늘 나의 좋아요 수
+            </motion.p>
             <div className="flex justify-center gap-x-10 items-center">
               <Image
                 src={'/assets/image/likes_count_total.png'}
@@ -51,7 +61,15 @@ export default function Page() {
                 width={118}
                 height={118}
               />
-              <p className="title-40">{designerLikesInfo?.totalLikes}개</p>
+              <motion.p
+                variants={showNumberVariants}
+                initial="initial"
+                animate={['animate', 'opacity']}
+                exit="exit"
+                className="title-40"
+              >
+                {designerLikesInfo?.totalLikes}개
+              </motion.p>
             </div>
           </div>
           <MypageLandingButton onClick={handleClickToCreatePortfolio}>
