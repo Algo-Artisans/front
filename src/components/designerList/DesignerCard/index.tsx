@@ -99,7 +99,7 @@ export default function DesignerCard({
             {imageUrls.map((url, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 relative w-[81px] h-[81px] overflow-hidden"
+                className="flex-shrink-0 relative w-[81px] h-[91px] overflow-hidden"
               >
                 {url ? (
                   <ImageContainer
