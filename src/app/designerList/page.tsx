@@ -56,12 +56,13 @@ export default function Page() {
     setPrevSelectedStyles(prevSelectedStyles);
 
     const dropdown = searchParams.get('dropdown') || '';
-    setPrevSelectedStyles(prevSelectedStyles);
-    setDropdown(dropdown);
+    if (dropdown !== '') {
+      setDropdown(dropdown);
+    }
   }, []);
 
   const { data: searchResults, refetch } =
-    prevSelectedStyles === ''
+    prevSelectedStyles === ',,'
       ? useGetAllPortfolio()
       : useGetDropDown(prevSelectedStyles, dropdown);
 
