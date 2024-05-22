@@ -64,8 +64,8 @@ export default function DesignerWorks({
           <span className="text-primary-300"> 작업물</span>들을 알려주세요.
         </Title>
         <div className="w-full h-full">
-          <p className="text-white caption-16">작업물 등록</p>
-          <p className="text-white caption-12">
+          <p className="text-white caption-16 mb-[5px]">작업물 등록</p>
+          <p className="text-white caption-12 mb-[5px]">
             디자이너님만의 헤어스타일 작품들을
             <span className="text-primary-300"> 4장</span> 공유해주세요!
           </p>
@@ -73,7 +73,7 @@ export default function DesignerWorks({
             {Array.from({ length: 4 }, (_, index) => (
               <div
                 key={index}
-                className="flex w-[138px] h-[150px] overflow-hidden"
+                className="flex-shrink-0 w-[138px] h-[150px] overflow-hidden rounded-[10px] relative" // 변경: flex-shrink-0 추가 및 스타일 조정
               >
                 {workImagesUrl[index] ? (
                   <ImageContainer
@@ -107,8 +107,8 @@ export default function DesignerWorks({
           </div>
         </div>
         <div className="flex flex-col w-full">
-          <p className="text-white caption-16">전문 헤어</p>
-          <p className="text-white caption-12">
+          <p className="text-white caption-16 mb-[5px]">전문 헤어</p>
+          <p className="text-white caption-12 mb-[5px]">
             평소 자신있는 전문 헤어스타일을
             <span className="text-primary-300"> 3개</span> 골라주세요
           </p>
