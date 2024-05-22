@@ -10,7 +10,7 @@ import Image from 'next/image';
 import BottomNavigation from '@/components/common/BottomNavigation';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { showNumberVariants, showTextVariants } from '@/constants/motion';
+import { showTextVariants } from '@/constants/motion';
 
 export default function Page() {
   const { data: userInfo } = useGetUserInfo();
@@ -62,7 +62,7 @@ export default function Page() {
                 height={118}
               />
               <motion.p
-                variants={showNumberVariants}
+                variants={showTextVariants}
                 initial="initial"
                 animate={['animate', 'opacity']}
                 exit="exit"

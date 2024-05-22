@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <QueryClientProviders>
       <html lang="en">
-        <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto overscroll-y-none scrollbar-hide">
+        <body className="relative min-h-[100dvh] w-full max-w-[480px] mx-auto overscroll-y-none overscroll-x-none scrollbar-hide">
           <Suspense>{children}</Suspense>
         </body>
       </html>

@@ -127,7 +127,7 @@ export default function DesignerWorks({
       </div>
       <CTAButton
         size="large"
-        disabled={false}
+        disabled={selectedHairStyles === null}
         onClick={handleClickCTAButton}
         className="absolute bottom-[40px]"
       >

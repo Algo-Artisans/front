@@ -62,8 +62,7 @@ export default function DesignerCertificate({
       </div>
       <CTAButton
         size="large"
-        //TODO: 수정
-        disabled={false}
+        disabled={certificateImageUrl === ''}
         onClick={() => {
           handleClickCTAButton();
         }}
