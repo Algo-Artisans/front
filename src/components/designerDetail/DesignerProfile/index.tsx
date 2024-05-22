@@ -41,6 +41,7 @@ export default function DesignerProfile({
   name,
   phoneNumber,
   profileImgUrl,
+  snsAddress,
   handleHeartClick,
 }: DesignerProfileProps) {
   return (
@@ -57,7 +58,7 @@ export default function DesignerProfile({
               <PhoneIcon /> {phoneNumber}
             </div>
             <div className="flex items-center gap-x-[5px]">
-              <InstagramIcon /> @salon_me
+              <InstagramIcon /> {snsAddress}
             </div>
           </div>
         </div>
