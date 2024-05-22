@@ -3,6 +3,7 @@ import './globals.css';
 import QueryClientProviders from '@/components/common/QueryClientProviders';
 import { Suspense } from 'react';
 
+// eslint-disable-next-line import/order
 import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
