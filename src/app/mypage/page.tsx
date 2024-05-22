@@ -1,5 +1,7 @@
 'use client';
 
+import { toast } from 'sonner';
+
 import { useGetUserInfo } from '../api/user/useGetUserInfo';
 import HeartNavyIcon from '../../../public/assets/icons/heart_navy_20.svg';
 import { useGetMyLikes } from '../api/portfolio/useGetMyLikes';
@@ -24,6 +26,9 @@ export default function Page() {
   };
   const handleClickToCreatePortfolio = () => {
     push(`/portfolioUpload`);
+  };
+  const handleClickMyFav = () => {
+    toast.info('아직 개발 중입니다! 조금만 기다려주세요:)');
   };
 
   return (
@@ -81,7 +86,7 @@ export default function Page() {
         </div>
       )}
       {userInfo && userInfo.role === 'GUEST' && (
-        <MypageLandingButton>
+        <MypageLandingButton onClick={handleClickMyFav}>
           <HeartNavyIcon />
           좋아요한 디자이너 보기
         </MypageLandingButton>

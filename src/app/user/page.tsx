@@ -46,9 +46,6 @@ export default function Page() {
     });
   }, [faceShapeBest, faceShapeWorst]);
 
-  // const { data: generatedBestImage } = useGetS3Image(bestImageUrl);
-  // const { data: generatedWorstImage } = useGetS3Image(worstImageUrl);
-
   const { data: generatedBestImage } = useGetS3Image(
     userInfo?.kakaoId
       ? bestImageUrls.map((url) => `results/${userInfo.kakaoId}${url}`)
@@ -124,7 +121,7 @@ export default function Page() {
         onClick={handleClickFab}
         variants={rotateButtonVariants}
         animate={isFabClicked ? 'active' : 'inactive'}
-        className="absolute bottom-0 right-0 w-[45px] h-[45px]"
+        className="bottom-5 right-5 w-[45px] h-[45px] fixed"
       >
         <FloatingActionButton
           className={isFabClicked ? 'bg-grey-300' : 'bg-primary-300'}
@@ -136,7 +133,7 @@ export default function Page() {
         variants={openHorizontalButtonContainer}
         initial="closed"
         animate={isFabClicked ? 'open' : 'closed'}
-        className="flex absolute bottom-0 gap-[10px] right-[55px]"
+        className="flex fixed bottom-5 gap-[10px] right-[75px]"
       >
         <motion.li variants={openHorizontalButtonItem}>
           <FloatingActionButton className="bg-primary-300">

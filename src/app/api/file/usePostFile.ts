@@ -18,9 +18,5 @@ export const usePostFiles = (): UseMutationResult<
   return useMutation({
     mutationKey: ['post-files'],
     mutationFn: (files: FormData) => postFiles(files),
-    // mypage 유저 정보 갱신
-    // onSuccess: () => {
-    //   queryClient.invalidateQueries({ queryKey: ['get-'] });
-    // },
   });
 };

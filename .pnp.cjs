@@ -59,6 +59,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:18.2.0"],\
+          ["sonner", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:1.4.41"],\
           ["tailwind-merge", "npm:2.2.2"],\
           ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "npm:3.4.1"],\
@@ -9152,6 +9153,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:18.2.0"],\
+          ["sonner", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:1.4.41"],\
           ["tailwind-merge", "npm:2.2.2"],\
           ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "npm:3.4.1"],\
@@ -10269,6 +10271,32 @@ const RAW_RUNTIME_STATE =
           ["agent-base", "npm:7.1.0"],\
           ["debug", "virtual:8b235322a8a24e48c015315ac31d9a45375a931d446b3d9b05b3960f64165451979d09fb0441934c12e21122cff6f3cbc821971e2170239ee8406b043c8fdde4#npm:4.3.4"],\
           ["socks", "npm:2.8.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["sonner", [\
+      ["npm:1.4.41", {\
+        "packageLocation": "./.yarn/cache/sonner-npm-1.4.41-39051ddf3a-31467ecab0.zip/node_modules/sonner/",\
+        "packageDependencies": [\
+          ["sonner", "npm:1.4.41"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:1.4.41", {\
+        "packageLocation": "./.yarn/__virtual__/sonner-virtual-8fc89456a8/0/cache/sonner-npm-1.4.41-39051ddf3a-31467ecab0.zip/node_modules/sonner/",\
+        "packageDependencies": [\
+          ["sonner", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:1.4.41"],\
+          ["@types/react", "npm:18.2.67"],\
+          ["@types/react-dom", "npm:18.2.22"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:1ab41de2e431e3d1cf476fcee5b7c4629ea39a7202287880cc7f72c53acbb603a4822c826a295c381df673d9f81514755051854c0bc83b75191cdcb6716c94c4#npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
